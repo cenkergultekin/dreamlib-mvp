@@ -1,0 +1,21 @@
+# Belgeler ve tasarım kaynakları repoya girmez
+belgeler/
+dreamlib-v1-design-type/
+*.docx
+*.pptx
+*.pdf
+
+# Gizli bilgiler
+.env
+.env.*
+*pass*.txt
+
+# Sistem dosyaları
+desktop.ini
+Thumbs.db
+.DS_Store
+
+# Bağımlılıklar / build çıktıları
+node_modules/
+dist/
+build/
