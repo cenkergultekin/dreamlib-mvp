@@ -1,8 +1,30 @@
 # Dreamlib tasarım denemesi
 
+## App ikon denemeleri
+
+2026-10-03. İlk düz/simetrik portre yapay ve hissiz bulundu; `assets/test/perest-app-icon-ilk-deneme.png` altında arşivlendi. Yeni iki seçenek: `assets/perest/perest-app-icon-02-ustten-bakis.png` ve `perest-app-icon-03-uykulu.png`. Henüz seçim yapılmadı. Yerleşik üreticinin gerçek çıktısı 1254 × 1254 PNG; prompttaki 2048 isteği uygulanmadı.
+
+Tam prompt = ortak gövde + ilgili varyant. Referanslar: ayakta master (kimlik) ve mimik sheet'i (ifade).
+
+```text
+Use case: logo-brand / expressive mobile app icon. Create one original Dreamlib icon featuring Perest, the EXACT lavender KOALA from reference 1. The reference defines identity and hand-drawn editorial visual language, NOT a rigid front-facing pose. Huge broad koala head, big irregular round ears with cream interiors, chunky long black oval nose, cheek freckles, lavender fur, charcoal sweater with cream stripes. Style: economical uneven black drawn lines, confident FLAT matte color shapes, extremely subtle paper tooth, NOT a glossy vector mascot, no gradients, no smooth airbrushed shading, no elaborate scratchy noise. Emotional immediate mascot presence like a beloved language-learning app icon, but entirely original Perest, no owl or brand imitation. TONGUE INSIDE at all times. Square high-resolution 2048x2048 master (highest native quality), no words, no typography, no watermark, no UI or phone mockup, no baked rounded corners. Character dominates and must read instantly small, ears within square with safe margin. Avoid symmetry and the artificial passport-portrait appearance. Very simple background, 4-color lavender/charcoal/cream/lime palette.
+```
+
+### 02-ustten-bakis
+
+```text
+Use case: logo-brand / expressive mobile app icon. Create one original Dreamlib icon featuring Perest, the EXACT lavender KOALA from reference 1. The reference defines identity and hand-drawn editorial visual language, NOT a rigid front-facing pose. Huge broad koala head, big irregular round ears with cream interiors, chunky long black oval nose, cheek freckles, lavender fur, charcoal sweater with cream stripes. Style: economical uneven black drawn lines, confident FLAT matte color shapes, extremely subtle paper tooth, NOT a glossy vector mascot, no gradients, no smooth airbrushed shading, no elaborate scratchy noise. Emotional immediate mascot presence like a beloved language-learning app icon, but entirely original Perest, no owl or brand imitation. TONGUE INSIDE at all times. Square high-resolution 2048x2048 master (highest native quality), no words, no typography, no watermark, no UI or phone mockup, no baked rounded corners. Character dominates and must read instantly small, ears within square with safe margin. Avoid symmetry and the artificial passport-portrait appearance. Very simple background, 4-color lavender/charcoal/cream/lime palette. EXPRESSIVE HIGH-ANGLE PORTRAIT: viewpoint distinctly ABOVE the koala looking DOWN at 35 degrees, Perest lifts its face to look up at viewer. Its massive head tilts 15 degrees toward left, one ear slightly nearer/larger and other recedes, foreshortened tiny sweater shoulders at bottom right. Eyes look UP toward camera, slightly asymmetric: one relaxed half-open eye, other more curious, one raised eyebrow. Tiny mischievous closed smile, gentle amused sleepy personality, not a blank doll. Both paws loosely gather a little cream crescent moon under cheek at lower left (one simple crescent, no extra prop), head still overwhelmingly dominant. Deep flat charcoal-violet background. Strong lively diagonal composition, hand-drawn thin contour and simple large shapes, readable silhouette. No top floating decorative moon, no stars. Preserve original koala irregularity, do not make plush or perfect symmetrical circles.
+```
+
+### 03-uykulu
+
+```text
+Use case: logo-brand / expressive mobile app icon. Create one original Dreamlib icon featuring Perest, the EXACT lavender KOALA from reference 1. The reference defines identity and hand-drawn editorial visual language, NOT a rigid front-facing pose. Huge broad koala head, big irregular round ears with cream interiors, chunky long black oval nose, cheek freckles, lavender fur, charcoal sweater with cream stripes. Style: economical uneven black drawn lines, confident FLAT matte color shapes, extremely subtle paper tooth, NOT a glossy vector mascot, no gradients, no smooth airbrushed shading, no elaborate scratchy noise. Emotional immediate mascot presence like a beloved language-learning app icon, but entirely original Perest, no owl or brand imitation. TONGUE INSIDE at all times. Square high-resolution 2048x2048 master (highest native quality), no words, no typography, no watermark, no UI or phone mockup, no baked rounded corners. Character dominates and must read instantly small, ears within square with safe margin. Avoid symmetry and the artificial passport-portrait appearance. Very simple background, 4-color lavender/charcoal/cream/lime palette. COZY SLEEPING ICON: view from ABOVE at a slightly diagonal angle, Perest's oversized lavender head reclines at about 25 degrees sideways into its own single large lavender supporting paw; other paw barely visible below chin. One ear occupies upper left, other occupies upper right at a different height, asymmetrical perspective. Eyes are closed with two loose gentle curved lines of unequal angle, eyebrow relaxed, tiny CONTENTED CLOSED smile, tongue invisible. Small charcoal sweater cuff with cream stripes at bottom. A SINGLE small acid lime crescent shape is nestled beside the head in the negative space at upper right; no stars or other elements. Warm flat cream background, charcoal contours, extremely subtle dry print texture, bold original editorial drawing. Tight comfortable character-led crop with all ears in frame and generous safe margins. This should feel like a real sleepy companion, warm and full of personality, not a neutral logo portrait.
+```
+
 ## Perest character sheet
 
-Cenker character sheet'i beğendi; karakterin adı artık **Perest**. Tüm üretilen görseller `assets/perest/` altında, önceki varyantlar arşiv olarak korunur. Güncel master: `perest-02-ayakta-master.png`.
+Cenker character sheet'i beğendi; karakterin adı artık **Perest**. Güncel Perest görselleri `assets/perest/`, önceki denemeler `assets/test/` altında korunur. Güncel master: `perest-02-ayakta-master.png`.
 
 2026-10-03. Seçilen çizim: dalgın koala (`referans/lib-style-master.png`); renk referansı: sokak koalası (`referans/lib-palette-master.png`). Çizim ve renk ayrı referans rolleriyle kullanıldı. Dil içeride, mimik duruma göre değişir. Yerleşik image_gen; kaynaklar ve PNG çıktılar yerel, git dışı. İlk dili dışarıda denemeler master değildir.
 
@@ -62,7 +84,7 @@ ONE landscape full-body sleeping illustration. Curled on side on floor, knees ge
 
 ### 01-sokak
 
-Yerel çıktı: `assets/perest/koala-01-sokak.png`.
+Yerel çıktı: `assets/test/koala-01-sokak.png`.
 
 ```text
 Create ONE original KOALA character concept for Dreamlib. The attached images are STYLE REFERENCES: transfer their eccentric adult editorial cartoon language, thin irregular black drawn lines, flat ink color areas, intentionally awkward anatomy and deadpan expressions; do not reproduce their people or cat. Clearly a KOALA with two large round ears and a prominent tall black oval nose. Not a teddy bear. Do not use polished kawaii app mascots, glossy vector stickers, rubber hose cartoon gloves, nightcaps, cute plush toys, 3D, gradients or lighting. A single character fills a square artwork with comfortable margins, no text, no logo, no UI, no watermark. Primary direction: the full-body streetwear person reference. An anthropomorphic koala standing casually in three-quarter view, one paw in a pocket. Tall slightly gangly torso with a broad pear-shaped lavender head, very big round ears, long drooping black nose, narrow sleepy eyes behind simple dark oval sunglasses. Oversized charcoal jacket over a cream T-shirt, baggy charcoal cropped trousers, plain cream trainers with no brand marks. Lavender paws with a few fine finger lines. Face has two uneven little cheek creases, understated attitude and slouch. Flat graphic drawing with sparse fine hand-drawn details; slight printed paper tooth. Solid acid yellow-green background, no scene or props. Original designer editorial mascot, amusing and cool rather than cute.
@@ -70,7 +92,7 @@ Create ONE original KOALA character concept for Dreamlib. The attached images ar
 
 ### 02-saskin
 
-Yerel çıktı: `assets/perest/koala-02-saskin.png`.
+Yerel çıktı: `assets/test/koala-02-saskin.png`.
 
 ```text
 Create ONE original KOALA character concept for Dreamlib. The attached images are STYLE REFERENCES: transfer their eccentric adult editorial cartoon language, thin irregular black drawn lines, flat ink color areas, intentionally awkward anatomy and deadpan expressions; do not reproduce their people or cat. Clearly a KOALA with two large round ears and a prominent tall black oval nose. Not a teddy bear. Do not use polished kawaii app mascots, glossy vector stickers, rubber hose cartoon gloves, nightcaps, cute plush toys, 3D, gradients or lighting. A single character fills a square artwork with comfortable margins, no text, no logo, no UI, no watermark. Primary direction: the startled cat portrait reference. A squat upright KOALA with enormous asymmetrical circular white eyes, tiny black off-center pupils, giant round pale-blue ears with lavender centers, tall near-black oval nose and a little open mouth with one tiny tooth. Long skinny arms hang down from a short pear-shaped blue body, oversized lavender paws, feet point inward. Irregular few fur tick lines around outer ears, no sharp cat ears, no whiskers or tail. A block of dark royal blue flat offset shadow along the right side of head and body like reference 2; no modeled shading. Clear thin black ink contour. Startled, oddball and funny. Plain muted magenta background. Full body, no clothing, no accessories, no surrounding characters. Draw like an independent editorial illustrator.
@@ -78,7 +100,7 @@ Create ONE original KOALA character concept for Dreamlib. The attached images ar
 
 ### 03-dalgin
 
-Yerel çıktı: `assets/perest/koala-03-dalgin.png`.
+Yerel çıktı: `assets/test/koala-03-dalgin.png`.
 
 ```text
 Create ONE original KOALA character concept for Dreamlib. The attached images are STYLE REFERENCES: transfer their eccentric adult editorial cartoon language, thin irregular black drawn lines, flat ink color areas, intentionally awkward anatomy and deadpan expressions; do not reproduce their people or cat. Clearly a KOALA with two large round ears and a prominent tall black oval nose. Not a teddy bear. Do not use polished kawaii app mascots, glossy vector stickers, rubber hose cartoon gloves, nightcaps, cute plush toys, 3D, gradients or lighting. A single character fills a square artwork with comfortable margins, no text, no logo, no UI, no watermark. Primary direction: the pink chess player reference's print texture and proportions. A massive squat rounded dusty-pink KOALA head with huge circular ears and small sleepy half-open white eyes, black oval nose and one tiny blue tongue sticking out at the side. Small barrel body in a butter-yellow sweater with two charcoal sleeve stripes. Seated at a very simple cream tabletop, chin propped in one large pink paw; other paw resting on table, expression lost in thought. Character is the only subject; no chess pieces, no human hair. Fine uneven coral and charcoal linework, matte colored pencil grain, handmade risograph paper texture. Background warm ivory with restrained tiny black stipple flecks like reference 3. Tight centered three-quarter portrait, deliberately strange proportions, contemporary editorial art.
@@ -86,23 +108,23 @@ Create ONE original KOALA character concept for Dreamlib. The attached images ar
 
 ### 04-uykulu
 
-Yerel çıktı: `assets/perest/koala-04-uykulu.png`.
+Yerel çıktı: `assets/test/koala-04-uykulu.png`.
 
 ```text
 Create ONE original KOALA character concept for Dreamlib. The attached images are STYLE REFERENCES: transfer their eccentric adult editorial cartoon language, thin irregular black drawn lines, flat ink color areas, intentionally awkward anatomy and deadpan expressions; do not reproduce their people or cat. Clearly a KOALA with two large round ears and a prominent tall black oval nose. Not a teddy bear. Do not use polished kawaii app mascots, glossy vector stickers, rubber hose cartoon gloves, nightcaps, cute plush toys, 3D, gradients or lighting. A single character fills a square artwork with comfortable margins, no text, no logo, no UI, no watermark. Primary direction: the blue enormous-headed person reference. A sleepy blue KOALA standing full body with an absurdly enormous head tilted almost 75 degrees sideways into its own giant supporting paw. Tiny body and short legs below the head, cream short-sleeved shirt, muted purple shorts and simple white slippers. Two huge round ears, tall black oval nose, uneven droopy white almond-shaped eyes and a tiny flat mouth, two loose wrinkle lines on forehead. The outsized paw supports the head at the ear exactly as a weary daydreamer, anatomy intentionally exaggerated but readable. Blue-on-blue palette with dark navy drawn details, flat fills and subtle rough paper print grain, a single flat navy oval ground shadow. Solid dusty sky-blue background. No human haircut, no hats, no extra objects, no cute sparkle motifs. Offbeat restrained adult cartoon, not children's-book koala.
 ```
 
-2026-10-03. Durum: maskot yönü seçilmedi. İlk retro çizim (eldiven, sneaker, gece şapkası) Cenker tarafından reddedildi; uygulamaya alınmadı. Logo ve uygulama ikonu seçilecek maskottan türetilecek.
+2026-10-03. İlk retro çizim reddedildi; seçilen Perest yönü ve ikon denemeleri yukarıda.
 
 UI taslağı: onboarding ve ana sayfada daha büyük karakter alanı, sade wordmark, haftalık ilerleme çubuğu, webde 520 px ekran sınırı. Krem/mor/asit yeşili ve Lexend korunur. Mevcut Lib geçici olarak kalır.
 
 ## Görsel seçenekler
 
-Yerel görseller `assets/perest/`; medya git dışıdır. Üretim: yerleşik image_gen. Yeni checkout bu görselleri gerektirmez; henüz uygulamadan import edilmezler.
+İlk seçeneklerin yerel görselleri `assets/test/`; medya git dışıdır. Üretim: yerleşik image_gen. Yeni checkout bu görselleri gerektirmez; henüz uygulamadan import edilmezler.
 
 ### grafik
 
-Dosya: `assets/perest/koala-grafik.png`.
+Dosya: `assets/test/koala-grafik.png`.
 
 Referans: C:/Users/gulte/Desktop/Projects/dreamlib/referans/pin-20.jpg
 
@@ -114,7 +136,7 @@ Use case: stylized-concept. Original koala mascot exploration for Dreamlib dream
 
 ### pixel
 
-Dosya: `assets/perest/koala-pixel.png`.
+Dosya: `assets/test/koala-pixel.png`.
 
 Referans: C:/Users/gulte/Desktop/Projects/dreamlib/referans/pin-14.jpg
 
@@ -126,7 +148,7 @@ Use case: stylized-concept. Original PIXEL ART koala mascot for Dreamlib, a drea
 
 ### editorial
 
-Dosya: `assets/perest/koala-editorial.png`.
+Dosya: `assets/test/koala-editorial.png`.
 
 Referans: yok
 
