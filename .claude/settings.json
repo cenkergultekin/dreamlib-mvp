@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git branch:*)",
+      "Bash(git fetch:*)",
+      "Bash(npx tsc --noEmit:*)",
+      "Bash(npx expo lint:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npm test:*)"
+    ],
+    "ask": [
+      "Bash(git push:*)",
+      "Bash(git reset:*)",
+      "Bash(git restore:*)",
+      "Bash(git clean:*)",
+      "Bash(git stash:*)",
+      "Bash(npx eas:*)",
+      "Bash(eas:*)",
+      "Bash(npx supabase:*)",
+      "Bash(supabase:*)"
+    ],
+    "deny": [
+      "Read(./belgeler/db pass.txt)",
+      "Read(./**/.env)",
+      "Read(./**/.env.*)",
+      "Edit(./**/.env)",
+      "Edit(./**/.env.*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)"
+    ]
+  }
+}
