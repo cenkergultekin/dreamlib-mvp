@@ -2,6 +2,10 @@
 
 ## App ikon denemeleri
 
+Son düzeltme: manga panelleri kaldırıldı, iki sayfa tamamen beyaz/boş. Gece moru güncel dosya assets/perest/perest-defter-01-gece.png. Diğer dört renk bu düzeltmeyle henüz yeniden üretilmedi.
+
+Tam edit promptu (referans perest-manga-01-gece.png): Precise local edit of provided Perest koala artwork. Change ONLY the open notebook pages: erase ALL manga illustrations, ALL panel borders, all little faces, comic marks and interior graphics on BOTH pages. Both page surfaces must be completely blank PURE WHITE #FFFFFF, not cream, with NO markings, NO lines, NO panels, NO text. Preserve ONLY the outer black silhouette contours of open notebook, central black fold seam, and minimal outer page-edge contours so it remains readable as an open white notebook held in one hand. Keep notebook exact position, shape and scale. Preserve the entire koala and composition unchanged: melted lavender body, giant ears, cream inner ears, long black nose, sleepy eyes, paw holding left page edge, other resting paw, puddle crescent, detached drip, thick black outlines. Preserve same dark purple background and all other colors. No red annotation marks, no new detail, no other edits. Square image sharp clean, same framing.
+
 2026-10-03. Erimiş Perest (08-eriyen-ruya) beğenildi. İki parmak işareti kaldırıldı; tek elle açık manga dergisini okuyan poz hazırlandı. Beş zemin: gece moru, krem, asit yeşili, petrol ve mercan. Dosyalar assets/perest/perest-manga-01-gece.png ile 02-krem, 03-asit, 04-petrol, 05-mercan (aynı perest-manga- öneki). Medya git dışı; ikon henüz uygulamaya alınmadı.
 
 ### Manga master promptu
