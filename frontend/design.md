@@ -1,5 +1,59 @@
 # Dreamlib tasarım denemesi
 
+## Lib character sheet
+
+2026-10-03. Seçilen çizim: dalgın koala (`referans/lib-style-master.png`); renk referansı: sokak koalası (`referans/lib-palette-master.png`). Çizim ve renk ayrı referans rolleriyle kullanıldı. Dil içeride, mimik duruma göre değişir. Yerleşik image_gen; kaynaklar ve PNG çıktılar yerel, git dışı. İlk dili dışarıda denemeler master değildir.
+
+**Dosyalar:** `assets/brand/lib-02-ayakta-master.png`, `lib-03-donus-sheet.png`, `lib-04-yakin-cekim.png`, `lib-05-oturan.png`, `lib-06-mimik-sheet.png`, `lib-07-uyuyan.png` (son beş dosya da aynı klasörde).
+
+Dönüş sheet'i dört görünüşü tek görselde; mimik sheet'i nötr, mutlu, uyuyan, meraklı, şaşkın ve huysuz ifadeleri gösterir. Görseller henüz UI'ya yerleştirilmedi.
+
+### Ayakta master düzeltme promptu
+
+Girdi: ilk ayakta deneme. Çıktı: `lib-02-ayakta-master.png`.
+
+```text
+Use case: identity-preserve edit. Edit the supplied full-body Dreamlib koala illustration. Change ONLY its mouth: REMOVE the protruding lime tongue COMPLETELY, close the mouth and draw a very small relaxed charcoal curved smile. There must be absolutely no tongue, no lime patch, no open mouth and no lip color. Keep the SAME koala identity, giant broad lavender head, giant round ivory inner ears, large long black nose, half-lidded ivory eyes, freckles, head/body ratio, arms, paws, legs, ivory shoes, charcoal shorts and exact charcoal sweater with two ivory stripes down each sleeve. Keep standing front pose, framing, thin imperfect contours, flat lavender/ivory/charcoal fills and rough printed pencil grain unchanged. Warm ivory paper background. Full body from ears to shoes, no cropping, no text, no logo, no gradients, no 3D. This corrected tongue-free standing view will be the character sheet identity master.
+```
+
+### Ortak üretim promptu
+
+Her aşağıdaki görselin tam promptu = bu ortak gövde + ilgili varyantın metni. Tek görsel referansı: `lib-02-ayakta-master.png`.
+
+```text
+Use case: identity-preserve character sheet. The supplied corrected Dreamlib KOALA image is the EXACT identity, wardrobe, proportions and drawing master. Invariants: enormous broad flattened lavender head, giant round slightly ragged ears with ivory centers, prominent long black oval koala nose, small cheek freckles, tiny stout body under huge head, short lavender legs and big paws. Exact wardrobe: charcoal crewneck sweater with TWO ivory stripes down each sleeve, ribbed cuffs/collar/hem, charcoal knee-length shorts, ivory low shoes with black soles. Flat lavender #B3A2CC, charcoal #27262B, ivory #F7EFDC; thin imperfect drawn contours, matte dry screenprint grain and pencil texture. Warm ivory fine-grained paper background. IMPORTANT: TONGUE IS ALWAYS INSIDE; NEVER draw a protruding tongue or lime mouth patch. Expression MUST suit the requested pose; don't repeat a fixed sleepy face. Same head shape/ear size/nose size for every expression. No hats, glasses or new accessories, no logo, no text, no labels, no watermark, no 3D, gradients or glossy vector finish. 
+```
+
+### 03-donus-sheet
+
+```text
+ONE wide landscape turnaround sheet, FOUR FULL BODY standing views evenly spaced on same baseline, same scale, all complete head-to-shoes with margins. Reading order FRONT, true LEFT SIDE PROFILE facing left, REAR, front THREE-QUARTER facing right. Front has calm neutral half-lidded eyes and a tiny closed-mouth smile. Side shows correct large nose projection, visible nearer round ear and depth of head; its mouth is closed. Rear truly faces away with NO eyes, nose or mouth visible; plain back of charcoal sweater, aligned sleeve stripes. Three-quarter has mildly curious eyes with one brow slightly raised and a small closed mouth. No furniture, props or ground shadows. Consistent model turnaround, not separate character identities.
+```
+
+### 04-yakin-cekim
+
+```text
+ONE square close-up three-quarter head-and-shoulders portrait facing slightly left (30 degrees), all enormous ears fully within frame. CURIOUS expression: one brow raised, eyes open a little more than reference and pupils looking slightly upward, small closed-mouth asymmetric smile. Paw lightly touches cheek, striped sweater at bottom. Preserve broad head proportions, long nose and freckles. Fine visible paper grain. No tabletop, no inset panels.
+```
+
+### 05-oturan
+
+```text
+ONE square full-body seated three-quarter pose, sitting on floor with knees loosely apart and short legs forward, full ivory shoes visible. One paw rests on knee and other gently supports cheek with elbow on knee. PENSIVE expression: pupils looking to the side, one slightly lowered brow, small closed straight mouth, no smile and NO tongue. Same enormous head and little body, same outfit, entire figure uncut. One faint flat charcoal contact shadow, no furniture, no scene.
+```
+
+### 06-mimik-sheet
+
+```text
+ONE landscape expression sheet, clean 3 columns x 2 rows of six large head-and-upper-shoulder portraits. Reading order: calm neutral half-lidded eyes and small closed-mouth smile; HAPPY squinting crescent eyes with wide CLOSED smile; SLEEPING fully closed eyes and relaxed closed mouth; CURIOUS asymmetric raised brow and upward pupils with small closed mouth; SURPRISED enlarged ivory eyes and tiny hollow black O mouth (NO tongue); mildly GRUMPY side-eye with brows sloped downward and small closed frown. Each expression clearly DIFFERENT in eyes, brows and mouth, not six similar sleepy faces. Identity geometry is identical across portraits: wide head, massive round ears, large oval nose, freckles. Generous even spacing, ears never overlap. No borders, labels, text, stars or decorations.
+```
+
+### 07-uyuyan
+
+```text
+ONE landscape full-body sleeping illustration. Curled on side on floor, knees gently bent, one lavender paw tucked beneath cheek, other resting across torso. Peaceful face with eyes entirely closed and a small CLOSED relaxed mouth, NO tongue. Entire giant head, both ears and complete shoes visible. Maintain head/body ratio and sweater's two cream sleeve stripes, shorts and shoes. Flat thin charcoal contact oval below. No bed, pillow, blanket, moon or symbols. Gentle drawn paper texture.
+```
+
 ## Kullanıcı referanslarıyla ikinci tur
 
 2026-10-03. Cenker dört editorial illüstrasyon paylaştı: ince düzensiz kontur, düz baskı renkleri, abartılı anatomi, dalgın/şaşkın ifade ve kâğıt dokusu. Dört ayrı koala üretildi; seçim henüz yapılmadı. Yerleşik image_gen kullanıldı. Referanslar git dışı `referans/editorial-01-sokak.png`–`editorial-04-uykulu.png`.
