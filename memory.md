@@ -10,3 +10,4 @@ Cenker bir hatayı düzelttiğinde düzeltmenin kalıbı buraya tek satır yazı
 - Ekranlar kalabalıktı → referanslardaki sadelik: az eleman, büyük yazı, her şey rahat görünür; karakter ve tek ana aksiyon öne çıkar.
 - Referans: `referans/` (Pinterest "dreamlib type"); en net beğenilenler pin 01, 14, 20, 27, 29.
 - 2026-10-03: Lib koala olacak. İlk tüylü, eldivenli/sneaker'lı retro çizim reddedildi → küçük aksesuar varyantları yerine farklı çizim tekniklerini görsellerle karşılaştır; yön seçilmeden maskot/logo/ikonu uygulamaya yerleştirme.
+- 2026-10-03: Koala için kullanıcı editorial illüstrasyon referansları verdi → ince düzensiz kontur, düz renk, baskı dokusu, abartılı kafa/beden oranı ve tuhaf/dalgın mimik; kıyafetli veya kıyafetsiz özgün karakter seçenekleri üret. Yerel kaynaklar `referans/editorial-01-sokak.png`–`editorial-04-uykulu.png`.

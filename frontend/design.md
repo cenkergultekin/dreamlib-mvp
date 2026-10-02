@@ -1,5 +1,41 @@
 # Dreamlib tasarım denemesi
 
+## Kullanıcı referanslarıyla ikinci tur
+
+2026-10-03. Cenker dört editorial illüstrasyon paylaştı: ince düzensiz kontur, düz baskı renkleri, abartılı anatomi, dalgın/şaşkın ifade ve kâğıt dokusu. Dört ayrı koala üretildi; seçim henüz yapılmadı. Yerleşik image_gen kullanıldı. Referanslar git dışı `referans/editorial-01-sokak.png`–`editorial-04-uykulu.png`.
+
+### 01-sokak
+
+Yerel çıktı: `assets/brand/koala-01-sokak.png`.
+
+```text
+Create ONE original KOALA character concept for Dreamlib. The attached images are STYLE REFERENCES: transfer their eccentric adult editorial cartoon language, thin irregular black drawn lines, flat ink color areas, intentionally awkward anatomy and deadpan expressions; do not reproduce their people or cat. Clearly a KOALA with two large round ears and a prominent tall black oval nose. Not a teddy bear. Do not use polished kawaii app mascots, glossy vector stickers, rubber hose cartoon gloves, nightcaps, cute plush toys, 3D, gradients or lighting. A single character fills a square artwork with comfortable margins, no text, no logo, no UI, no watermark. Primary direction: the full-body streetwear person reference. An anthropomorphic koala standing casually in three-quarter view, one paw in a pocket. Tall slightly gangly torso with a broad pear-shaped lavender head, very big round ears, long drooping black nose, narrow sleepy eyes behind simple dark oval sunglasses. Oversized charcoal jacket over a cream T-shirt, baggy charcoal cropped trousers, plain cream trainers with no brand marks. Lavender paws with a few fine finger lines. Face has two uneven little cheek creases, understated attitude and slouch. Flat graphic drawing with sparse fine hand-drawn details; slight printed paper tooth. Solid acid yellow-green background, no scene or props. Original designer editorial mascot, amusing and cool rather than cute.
+```
+
+### 02-saskin
+
+Yerel çıktı: `assets/brand/koala-02-saskin.png`.
+
+```text
+Create ONE original KOALA character concept for Dreamlib. The attached images are STYLE REFERENCES: transfer their eccentric adult editorial cartoon language, thin irregular black drawn lines, flat ink color areas, intentionally awkward anatomy and deadpan expressions; do not reproduce their people or cat. Clearly a KOALA with two large round ears and a prominent tall black oval nose. Not a teddy bear. Do not use polished kawaii app mascots, glossy vector stickers, rubber hose cartoon gloves, nightcaps, cute plush toys, 3D, gradients or lighting. A single character fills a square artwork with comfortable margins, no text, no logo, no UI, no watermark. Primary direction: the startled cat portrait reference. A squat upright KOALA with enormous asymmetrical circular white eyes, tiny black off-center pupils, giant round pale-blue ears with lavender centers, tall near-black oval nose and a little open mouth with one tiny tooth. Long skinny arms hang down from a short pear-shaped blue body, oversized lavender paws, feet point inward. Irregular few fur tick lines around outer ears, no sharp cat ears, no whiskers or tail. A block of dark royal blue flat offset shadow along the right side of head and body like reference 2; no modeled shading. Clear thin black ink contour. Startled, oddball and funny. Plain muted magenta background. Full body, no clothing, no accessories, no surrounding characters. Draw like an independent editorial illustrator.
+```
+
+### 03-dalgin
+
+Yerel çıktı: `assets/brand/koala-03-dalgin.png`.
+
+```text
+Create ONE original KOALA character concept for Dreamlib. The attached images are STYLE REFERENCES: transfer their eccentric adult editorial cartoon language, thin irregular black drawn lines, flat ink color areas, intentionally awkward anatomy and deadpan expressions; do not reproduce their people or cat. Clearly a KOALA with two large round ears and a prominent tall black oval nose. Not a teddy bear. Do not use polished kawaii app mascots, glossy vector stickers, rubber hose cartoon gloves, nightcaps, cute plush toys, 3D, gradients or lighting. A single character fills a square artwork with comfortable margins, no text, no logo, no UI, no watermark. Primary direction: the pink chess player reference's print texture and proportions. A massive squat rounded dusty-pink KOALA head with huge circular ears and small sleepy half-open white eyes, black oval nose and one tiny blue tongue sticking out at the side. Small barrel body in a butter-yellow sweater with two charcoal sleeve stripes. Seated at a very simple cream tabletop, chin propped in one large pink paw; other paw resting on table, expression lost in thought. Character is the only subject; no chess pieces, no human hair. Fine uneven coral and charcoal linework, matte colored pencil grain, handmade risograph paper texture. Background warm ivory with restrained tiny black stipple flecks like reference 3. Tight centered three-quarter portrait, deliberately strange proportions, contemporary editorial art.
+```
+
+### 04-uykulu
+
+Yerel çıktı: `assets/brand/koala-04-uykulu.png`.
+
+```text
+Create ONE original KOALA character concept for Dreamlib. The attached images are STYLE REFERENCES: transfer their eccentric adult editorial cartoon language, thin irregular black drawn lines, flat ink color areas, intentionally awkward anatomy and deadpan expressions; do not reproduce their people or cat. Clearly a KOALA with two large round ears and a prominent tall black oval nose. Not a teddy bear. Do not use polished kawaii app mascots, glossy vector stickers, rubber hose cartoon gloves, nightcaps, cute plush toys, 3D, gradients or lighting. A single character fills a square artwork with comfortable margins, no text, no logo, no UI, no watermark. Primary direction: the blue enormous-headed person reference. A sleepy blue KOALA standing full body with an absurdly enormous head tilted almost 75 degrees sideways into its own giant supporting paw. Tiny body and short legs below the head, cream short-sleeved shirt, muted purple shorts and simple white slippers. Two huge round ears, tall black oval nose, uneven droopy white almond-shaped eyes and a tiny flat mouth, two loose wrinkle lines on forehead. The outsized paw supports the head at the ear exactly as a weary daydreamer, anatomy intentionally exaggerated but readable. Blue-on-blue palette with dark navy drawn details, flat fills and subtle rough paper print grain, a single flat navy oval ground shadow. Solid dusty sky-blue background. No human haircut, no hats, no extra objects, no cute sparkle motifs. Offbeat restrained adult cartoon, not children's-book koala.
+```
+
 2026-10-03. Durum: maskot yönü seçilmedi. İlk retro çizim (eldiven, sneaker, gece şapkası) Cenker tarafından reddedildi; uygulamaya alınmadı. Logo ve uygulama ikonu seçilecek maskottan türetilecek.
 
 UI taslağı: onboarding ve ana sayfada daha büyük karakter alanı, sade wordmark, haftalık ilerleme çubuğu, webde 520 px ekran sınırı. Krem/mor/asit yeşili ve Lexend korunur. Mevcut Lib geçici olarak kalır.
