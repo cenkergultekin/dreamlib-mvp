@@ -53,8 +53,17 @@ Cenker söylemeden Faz 2 işine (şema, Supabase istemcisi, API çağrısı) ba�
 
 - `belgeler/` ve `dreamlib-v1-design-type/` git dışı; repoya ekleme. `belgeler/db pass.txt`'i açma.
 - `.env*` okuma/yazma yok; anahtarlar uygulamaya gömülmez, Faz 2'de Edge Functions'ta durur.
-- Konu başına küçük commit. `main`'e push Cenker'in onayıyla; force push yok.
-- Commit ve PR yazarı yalnız Cenker; co-author ya da "Generated with" satırı yok.
+- Commit ve PR yazarı yalnız Cenker; co-author ya da "Generated with" satırı yok. Force push yok.
+
+## Git ve PR
+
+- Commit'ler Conventional Commits, İngilizce ve kısa: `feat: add dream feed`, `fix: keep tab slots fixed`. Türler: `feat`, `fix`, `refactor`, `style`, `docs`, `test`, `chore`. Konu başına bir commit; gövde yalnız gerekiyorsa.
+- İş dalda yapılır: `feat/<konu>`, `fix/<konu>` (ör. `feat/dream-feed`). `main`'e PR ile girer; doğrudan `main`'e push Cenker'in açık onayıyla.
+- PR başlığı commit gibi (İngilizce, kısa). PR gövdesi **Türkçe**, Cenker'in hızlıca anlayacağı sade dille:
+  - **Ne değişti:** kullanıcının göreceği değişiklik, 2-4 madde.
+  - **Neden:** hangi isteğe ya da soruna karşılık.
+  - **Nasıl denendi:** hangi ekranlar gezildi, tip kontrolü ve lint.
+  - **Dikkat:** varsa açık kalan, bilerek yapılmayan ya da karar bekleyen şey.
 
 ## Hafıza ve dosya boyu
 
