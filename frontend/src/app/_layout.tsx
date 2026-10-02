@@ -1,5 +1,4 @@
-import { ArchivoBlack_400Regular } from '@expo-google-fonts/archivo-black';
-import { SpaceGrotesk_500Medium, SpaceGrotesk_700Bold } from '@expo-google-fonts/space-grotesk';
+import { Lexend_400Regular, Lexend_500Medium, Lexend_700Bold, Lexend_800ExtraBold } from '@expo-google-fonts/lexend';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
@@ -8,6 +7,7 @@ import { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { DraftProvider } from '@/state/draft';
+import { SessionProvider } from '@/state/session';
 import { ThemeProvider, useTheme } from '@/theme/theme';
 
 SplashScreen.preventAutoHideAsync();
@@ -19,7 +19,7 @@ function Navigator() {
       <StatusBar style={scheme === 'dark' ? 'light' : 'dark'} />
       <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: c.bg } }}>
         <Stack.Screen name="(tabs)" />
-        <Stack.Screen name="onboarding" options={{ presentation: 'fullScreenModal' }} />
+        <Stack.Screen name="onboarding" options={{ animation: 'fade', gestureEnabled: false }} />
         <Stack.Screen name="premium" options={{ presentation: 'modal' }} />
         <Stack.Screen name="bedtime" options={{ presentation: 'modal' }} />
       </Stack>
@@ -28,7 +28,7 @@ function Navigator() {
 }
 
 export default function RootLayout() {
-  const [loaded] = useFonts({ ArchivoBlack_400Regular, SpaceGrotesk_500Medium, SpaceGrotesk_700Bold });
+  const [loaded] = useFonts({ Lexend_400Regular, Lexend_500Medium, Lexend_700Bold, Lexend_800ExtraBold });
 
   useEffect(() => {
     if (loaded) SplashScreen.hideAsync();
@@ -39,9 +39,11 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <ThemeProvider>
-        <DraftProvider>
-          <Navigator />
-        </DraftProvider>
+        <SessionProvider>
+          <DraftProvider>
+            <Navigator />
+          </DraftProvider>
+        </SessionProvider>
       </ThemeProvider>
     </SafeAreaProvider>
   );

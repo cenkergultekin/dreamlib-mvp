@@ -4,3 +4,8 @@ Cenker bir hatayı düzelttiğinde düzeltmenin kalıbı buraya tek satır yazı
 
 - Commit'e Claude co-author / "Generated with" satırı eklendi → commit ve PR yazarı yalnız Cenker, ek satır yok.
 - Tasarımı belgelerdeki tasarımcıya bıraktım → tasarım da bizde; ekranı biz tasarlarız, kimseyi bekleme.
+- Büyük harfli, harf aralıklı, soluk gri küçük etiketler (`@cenker · ÜCRETSİZ PLAN` gibi) kullandım → yok; küçük metin de normal yazım ve okunur renkte.
+- Her karta ayrı renk verdim (sarı, mavi, pembe, turuncu…) → 60-30-10: %60 krem/beyaz zemin, %30 mor, %10 asit yeşili (ana aksiyon). Gece de aynı oran.
+- Yüzen, ortası kabarık "modern" navbar yaptım → referanstaki gibi: alta oturan, konturlu, yuvarlak ikon butonları, aktif olan etiketli hap.
+- Ekranlar kalabalıktı → referanslardaki sadelik: az eleman, büyük yazı, her şey rahat görünür; karakter ve tek ana aksiyon öne çıkar.
+- Referans: `referans/` (Pinterest "dreamlib type"); en net beğenilenler pin 01, 14, 20, 27, 29.

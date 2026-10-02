@@ -1,18 +1,14 @@
 import { Redirect, router } from 'expo-router';
 import { useEffect, useEffectEvent, useState } from 'react';
-import { View } from 'react-native';
 
 import { MangaPage } from '@/components/manga-page';
-import { Button, Loading, Screen, Segmented, T, TopBar } from '@/components/ui';
+import { Button, Loading, Screen, Segmented, TopBar } from '@/components/ui';
 import { tr } from '@/i18n/tr';
 import { generateManga, saveDream } from '@/services/api';
 import type { Visibility } from '@/services/types';
 import { useDraft } from '@/state/draft';
-import { useTheme } from '@/theme/theme';
-import { space } from '@/theme/tokens';
 
 export default function Manga() {
-  const { c } = useTheme();
   const { draft, update, reset } = useDraft();
   const [saving, setSaving] = useState(false);
   const [round, setRound] = useState(0);
@@ -34,13 +30,20 @@ export default function Manga() {
   }, [round]);
 
   if (!draft.analysis) return <Redirect href="/tell" />;
-  if (drawnRound !== round) return <Screen scroll={false}><Loading label={tr.style.drawing} /></Screen>;
+  if (drawnRound !== round)
+    return (
+      <Screen scroll={false}>
+        <Loading label={tr.style.drawing} />
+      </Screen>
+    );
 
   const save = async () => {
+    if (saving) return;
     setSaving(true);
     const dream = await saveDream({ rawText: draft.rawText, analysis: draft.analysis!, panels: draft.panels, style: draft.style, visibility: draft.visibility });
     reset();
-    router.dismissAll();
+    // Leave the flow: back to the tabs, then open the saved dream.
+    router.dismissTo('/');
     router.push({ pathname: '/dream/[id]', params: { id: dream.id } });
   };
 
@@ -54,19 +57,14 @@ export default function Manga() {
       }>
       <TopBar title={draft.analysis.title} />
       <MangaPage panels={draft.panels} withAvatar={draft.withAvatar} />
-      <T v="label" style={{ textAlign: 'center' }} color={c.muted}>
-        {tr.style.styles[draft.style]} · {draft.panelCount} panel
-      </T>
-      <View style={{ gap: space.sm }}>
-        <Segmented<Visibility>
-          value={draft.visibility}
-          onChange={(v) => update({ visibility: v })}
-          options={[
-            { key: 'private', label: tr.manga.visibility.private },
-            { key: 'public', label: tr.manga.visibility.public },
-          ]}
-        />
-      </View>
+      <Segmented<Visibility>
+        value={draft.visibility}
+        onChange={(v) => update({ visibility: v })}
+        options={[
+          { key: 'private', label: tr.manga.visibility.private },
+          { key: 'public', label: tr.manga.visibility.public },
+        ]}
+      />
     </Screen>
   );
 }

@@ -11,11 +11,13 @@ export default function Soon() {
   const { title } = useLocalSearchParams<{ title?: string }>();
   return (
     <Screen>
-      <TopBar title={title} />
-      <View style={{ alignItems: 'center', gap: space.md, paddingTop: 80 }}>
-        <Lib mood="thinking" size={110} />
-        <T v="h2">{tr.common.soon}</T>
-        <T>{tr.soonBody}</T>
+      <TopBar />
+      <View style={{ alignItems: 'center', gap: space.lg, paddingTop: space.xxl * 2 }}>
+        <Lib mood="thinking" size={160} bounce />
+        <T v="hero" style={{ textAlign: 'center' }}>
+          {title ?? tr.common.soon}
+        </T>
+        <T style={{ textAlign: 'center' }}>{tr.soonBody}</T>
       </View>
     </Screen>
   );

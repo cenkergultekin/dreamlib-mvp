@@ -8,7 +8,7 @@ import { interpretDream } from '@/services/api';
 import type { InterpretationType } from '@/services/types';
 import { useDraft } from '@/state/draft';
 import { useTheme } from '@/theme/theme';
-import { border, fonts, palette, radius, space } from '@/theme/tokens';
+import { border, fonts, radius, space } from '@/theme/tokens';
 
 const types: InterpretationType[] = ['universal', 'cultural', 'psychoanalytic'];
 
@@ -19,6 +19,7 @@ export default function Review() {
   const [busy, setBusy] = useState(false);
 
   const submit = async () => {
+    if (busy) return;
     setBusy(true);
     const analysis = await interpretDream(text, draft.interpretationType, draft.analysisIndex);
     update({ cleanText: text, analysis });
@@ -26,12 +27,17 @@ export default function Review() {
     router.push('/flow/analysis');
   };
 
-  if (busy) return <Screen scroll={false}><Loading label={tr.review.interpreting} /></Screen>;
+  if (busy)
+    return (
+      <Screen scroll={false}>
+        <Loading label={tr.review.interpreting} />
+      </Screen>
+    );
 
   return (
     <Screen footer={<Button label={tr.review.submit} onPress={submit} disabled={text.trim().length < 10} />}>
       <TopBar />
-      <View style={{ gap: 6 }}>
+      <View style={{ gap: space.sm }}>
         <T v="h1">{tr.review.title}</T>
         <T>{tr.review.sub}</T>
       </View>
@@ -43,27 +49,30 @@ export default function Review() {
         style={[styles.input, { backgroundColor: c.card, color: c.text, borderColor: c.line, boxShadow: `4px 4px 0 ${c.shadow}` }]}
       />
 
-      <Section title={tr.review.tags}>
-        <View style={styles.wrap}>
-          {draft.tags.map((t) => (
-            <Chip key={t} label={t} />
-          ))}
-        </View>
-      </Section>
+      <View style={styles.wrap}>
+        {draft.tags.map((t) => (
+          <Chip key={t} label={`#${t}`} />
+        ))}
+      </View>
 
       <Section title={tr.review.typeTitle}>
         {types.map((key) => {
           const on = draft.interpretationType === key;
           const info = tr.review.types[key];
+          const fg = on ? '#FFFFFF' : undefined;
           return (
             <Pressable
               key={key}
               onPress={() => update({ interpretationType: key })}
-              style={[styles.option, { backgroundColor: on ? palette.lavender : c.card, borderColor: c.line, boxShadow: on ? `4px 4px 0 ${c.shadow}` : 'none' }]}>
-              <View style={[styles.radio, { borderColor: c.line, backgroundColor: on ? palette.lime : palette.paper }]} />
+              style={[styles.option, { backgroundColor: on ? c.purple : c.card, borderColor: c.line, boxShadow: on ? `4px 4px 0 ${c.shadow}` : 'none' }]}>
+              <View style={[styles.radio, { borderColor: c.line, backgroundColor: on ? c.lime : c.card }]} />
               <View style={{ flex: 1, gap: 2 }}>
-                <T v="h3" color={on ? palette.ink : undefined}>{info.label}</T>
-                <T v="small" color={on ? palette.ink : undefined}>{info.detail}</T>
+                <T v="h2" color={fg}>
+                  {info.label}
+                </T>
+                <T v="small" color={fg}>
+                  {info.detail}
+                </T>
               </View>
               {key === 'psychoanalytic' ? <Badge label={tr.common.premium} /> : null}
             </Pressable>
@@ -75,8 +84,8 @@ export default function Review() {
 }
 
 const styles = StyleSheet.create({
-  input: { minHeight: 140, borderRadius: radius.lg, padding: space.lg, fontFamily: fonts.regular, fontSize: 16, lineHeight: 24, textAlignVertical: 'top', borderWidth: border },
+  input: { minHeight: 150, borderRadius: radius.lg, padding: space.xl, fontFamily: fonts.regular, fontSize: 18, lineHeight: 27, textAlignVertical: 'top', borderWidth: border },
   wrap: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
-  option: { flexDirection: 'row', alignItems: 'center', gap: space.md, padding: space.lg, borderRadius: radius.md, borderWidth: border },
-  radio: { width: 22, height: 22, borderRadius: 11, borderWidth: border },
+  option: { flexDirection: 'row', alignItems: 'center', gap: space.lg, padding: space.xl, borderRadius: radius.lg, borderWidth: border },
+  radio: { width: 26, height: 26, borderRadius: 13, borderWidth: border },
 });

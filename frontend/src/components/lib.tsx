@@ -30,10 +30,10 @@ export function Lib({ mood = 'happy', size = 96, bounce }: { mood?: LibMood; siz
       <Svg width={size} height={size} viewBox="0 0 120 120">
         <Ellipse cx={62} cy={112} rx={30} ry={5} fill={ink} opacity={0.15} />
         <Path d="M18 72 C16 38 38 20 62 20 C90 20 104 42 102 72 C101 96 88 106 60 106 C32 106 19 96 18 72 Z" fill={palette.lavender} stroke={ink} strokeWidth={3.5} />
-        <Path d="M30 40 Q 58 12 92 30 L 108 8 Z" fill={palette.pink} stroke={ink} strokeWidth={3.5} strokeLinejoin="round" />
-        <Circle cx={108} cy={8} r={6.5} fill={palette.lime} stroke={ink} strokeWidth={3} />
-        <Circle cx={40} cy={76} r={6} fill={palette.pink} />
-        <Circle cx={86} cy={76} r={6} fill={palette.pink} />
+        <Path d="M30 40 Q 58 12 92 30 L 108 8 Z" fill={palette.lime} stroke={ink} strokeWidth={3.5} strokeLinejoin="round" />
+        <Circle cx={108} cy={8} r={6.5} fill={palette.purple} stroke={ink} strokeWidth={3} />
+        <Circle cx={40} cy={76} r={6} fill={palette.purple} opacity={0.35} />
+        <Circle cx={86} cy={76} r={6} fill={palette.purple} opacity={0.35} />
         <Face mood={mood} />
       </Svg>
     </Animated.View>

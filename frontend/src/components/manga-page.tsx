@@ -46,5 +46,5 @@ const styles = StyleSheet.create({
   caption: { margin: 6, alignSelf: 'flex-start', backgroundColor: palette.paper, borderWidth: 1.5, borderColor: '#121016', borderRadius: 8, paddingHorizontal: 6, paddingVertical: 3 },
   captionText: { fontFamily: fonts.bold, fontSize: 11, color: '#121016' },
   me: { position: 'absolute', top: 6, right: 6, paddingHorizontal: 6, paddingVertical: 2, borderRadius: 999, borderWidth: 1.5, borderColor: palette.ink },
-  meText: { fontFamily: fonts.display, fontSize: 9 },
+  meText: { fontFamily: fonts.heavy, fontSize: 9 },
 });

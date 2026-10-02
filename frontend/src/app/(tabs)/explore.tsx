@@ -8,34 +8,34 @@ import { tr } from '@/i18n/tr';
 import { listExplore } from '@/services/api';
 import { space } from '@/theme/tokens';
 
-const heights = [210, 160, 240, 180];
+const heights = [170, 120, 200, 140];
 
 export default function Explore() {
   const [filter, setFilter] = useState(tr.explore.filters[0]);
   const all = filter === tr.explore.filters[0];
-  const { data, loading } = useAsync(() => listExplore(all ? undefined : filter), filter);
-
+  // Keep showing the previous list while a filter loads, so tapping a chip never blanks the screen.
+  const { data } = useAsync(() => listExplore(all ? undefined : filter), filter);
   const cols = [0, 1].map((col) => (data ?? []).filter((_, i) => i % 2 === col));
 
   return (
     <Screen>
-      <View style={{ gap: 6, paddingTop: space.xl }}>
-        <T v="h1">{tr.explore.title}</T>
+      <View style={{ gap: space.sm }}>
+        <T v="hero">{tr.explore.title}</T>
         <T>{tr.explore.sub}</T>
       </View>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: space.sm }}>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: space.sm, paddingRight: 8 }}>
         {tr.explore.filters.map((f) => (
           <Chip key={f} label={f} selected={filter === f} onPress={() => setFilter(f)} />
         ))}
       </ScrollView>
-      {loading ? (
+      {!data ? (
         <Loading label="" />
       ) : (
-        <View style={{ flexDirection: 'row', gap: space.md }}>
+        <View style={{ flexDirection: 'row', gap: space.lg }}>
           {cols.map((items, col) => (
-            <View key={col} style={{ flex: 1, gap: space.md }}>
+            <View key={col} style={{ flex: 1, gap: space.lg }}>
               {items.map((d, i) => (
-                <DreamCard key={d.id} dream={d} height={heights[(i * 2 + col) % heights.length] - 60} />
+                <DreamCard key={d.id} dream={d} height={heights[(i * 2 + col) % heights.length]} />
               ))}
             </View>
           ))}

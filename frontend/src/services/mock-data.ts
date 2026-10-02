@@ -1,20 +1,21 @@
 import type { Analysis, Art, Dream, Match, Message, Profile } from './types';
 
 // Flat [block, disc, accent] triples from the theme palette; stand-ins for generated art.
+// Flat [block, disc, accent] triples kept to the 60-30-10 palette; stand-ins for generated art.
 export const art = {
-  glass: ['#B8A4FF', '#D7FF3D', '#FFFDF7'],
-  birds: ['#FFD84D', '#FF8A4C', '#FFFDF7'],
-  door: ['#7B5CFF', '#FF9BD2', '#D7FF3D'],
-  train: ['#121016', '#FFD84D', '#7B5CFF'],
-  market: ['#D7FF3D', '#7B5CFF', '#FF9BD2'],
-  stairs: ['#8FD3FF', '#FFFDF7', '#7B5CFF'],
-  clocks: ['#FF9BD2', '#FFD84D', '#B8A4FF'],
-  library: ['#FF8A4C', '#B8A4FF', '#FFD84D'],
-  desert: ['#FFD84D', '#FFFDF7', '#FF8A4C'],
-  rain: ['#7B5CFF', '#8FD3FF', '#B8A4FF'],
-  shell: ['#FFFDF7', '#FF9BD2', '#8FD3FF'],
-  windows: ['#8FD3FF', '#D7FF3D', '#FF9BD2'],
-  snow: ['#B8A4FF', '#FFFDF7', '#8FD3FF'],
+  glass: ['#7B5CFF', '#D7FF3D', '#FFFDF8'],
+  birds: ['#CFC3FF', '#FFFDF8', '#7B5CFF'],
+  door: ['#FFFDF8', '#7B5CFF', '#CFC3FF'],
+  train: ['#121016', '#D7FF3D', '#7B5CFF'],
+  market: ['#D7FF3D', '#7B5CFF', '#FFFDF8'],
+  stairs: ['#CFC3FF', '#7B5CFF', '#D7FF3D'],
+  clocks: ['#FFFDF8', '#CFC3FF', '#7B5CFF'],
+  library: ['#7B5CFF', '#CFC3FF', '#FFFDF8'],
+  desert: ['#FFFDF8', '#D7FF3D', '#CFC3FF'],
+  rain: ['#7B5CFF', '#FFFDF8', '#CFC3FF'],
+  shell: ['#CFC3FF', '#D7FF3D', '#7B5CFF'],
+  windows: ['#121016', '#CFC3FF', '#7B5CFF'],
+  snow: ['#CFC3FF', '#FFFDF8', '#7B5CFF'],
 } satisfies Record<string, Art>;
 
 const panelArts: Art[] = [art.glass, art.birds, art.stairs, art.market, art.library, art.train, art.clocks, art.windows, art.snow];

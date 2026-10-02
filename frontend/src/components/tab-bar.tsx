@@ -6,64 +6,66 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Icon, type IconName } from '@/components/ui';
 import { tr } from '@/i18n/tr';
 import { useTheme } from '@/theme/theme';
-import { border, fonts, palette, radius } from '@/theme/tokens';
+import { border, fonts, palette, radius, space } from '@/theme/tokens';
 
 type BottomTabBarProps = Parameters<NonNullable<ComponentProps<typeof Tabs>['tabBar']>>[0];
 
-const tabs: Record<string, { label: string; icon: IconName; iconOn: IconName }> = {
-  index: { label: tr.tabs.home, icon: 'moon-outline', iconOn: 'moon' },
-  explore: { label: tr.tabs.explore, icon: 'compass-outline', iconOn: 'compass' },
-  tell: { label: tr.tabs.tell, icon: 'mic', iconOn: 'mic' },
-  matches: { label: tr.tabs.matches, icon: 'people-outline', iconOn: 'people' },
-  profile: { label: tr.tabs.profile, icon: 'person-outline', iconOn: 'person' },
+const tabs: Record<string, { label: string; icon: IconName }> = {
+  index: { label: tr.tabs.home, icon: 'home' },
+  explore: { label: tr.tabs.explore, icon: 'compass' },
+  tell: { label: tr.tabs.tell, icon: 'mic' },
+  matches: { label: tr.tabs.matches, icon: 'people' },
+  profile: { label: tr.tabs.profile, icon: 'person' },
 };
 
-/** Ink pill bar (pin 29); the active tab becomes a lime pill, "Anlat" is a raised lime button. */
+/**
+ * Docked bar from the references (pins 01, 29): outlined round icon buttons; the active tab becomes
+ * a purple rounded square with its name under it. "Anlat" stays lime as the one main action.
+ */
 export function TabBar({ state, navigation, descriptors }: BottomTabBarProps) {
   const { c } = useTheme();
   const insets = useSafeAreaInsets();
 
   return (
-    <View style={[styles.wrap, { paddingBottom: Math.max(insets.bottom, 12), pointerEvents: 'box-none' }]}>
-      <View style={[styles.bar, { backgroundColor: c.navBg, borderColor: c.line, boxShadow: `4px 4px 0 ${c.shadow}` }]}>
-        {state.routes.map((route, i) => {
-          const meta = tabs[route.name];
-          const options = descriptors[route.key].options as { href?: null };
-          if (!meta || options.href === null) return null;
-          const on = state.index === i;
-          const main = route.name === 'tell';
-          const press = () => {
-            const e = navigation.emit({ type: 'tabPress', target: route.key, canPreventDefault: true });
-            if (!on && !e.defaultPrevented) navigation.navigate(route.name);
-          };
-          if (main) {
-            return (
-              <Pressable key={route.key} onPress={press} style={styles.item} accessibilityRole="tab" accessibilityLabel={meta.label} accessibilityState={{ selected: on }}>
-                <View style={[styles.main, { backgroundColor: c.navActive, borderColor: palette.cream }]}>
-                  <Icon name="mic" size={24} color={palette.ink} />
-                </View>
-              </Pressable>
-            );
-          }
-          return (
-            <Pressable key={route.key} onPress={press} style={styles.item} accessibilityRole="tab" accessibilityState={{ selected: on }}>
-              <View style={[styles.pill, on && { backgroundColor: c.navActive }]}>
-                <Icon name={on ? meta.iconOn : meta.icon} size={19} color={on ? palette.ink : 'rgba(255,246,230,0.6)'} />
-              </View>
-              <Text style={[styles.label, { color: on ? palette.cream : 'rgba(255,246,230,0.55)' }]}>{meta.label}</Text>
-            </Pressable>
-          );
-        })}
-      </View>
+    <View style={[styles.bar, { backgroundColor: c.navBg, borderTopColor: c.line, paddingBottom: Math.max(insets.bottom, space.md) }]}>
+      {state.routes.map((route, i) => {
+        const meta = tabs[route.name];
+        const options = descriptors[route.key].options as { href?: null };
+        if (!meta || options.href === null) return null;
+        const on = state.index === i;
+        const main = route.name === 'tell';
+        const press = () => {
+          const e = navigation.emit({ type: 'tabPress', target: route.key, canPreventDefault: true });
+          if (!on && !e.defaultPrevented) navigation.navigate(route.name);
+        };
+        const bg = on ? c.purple : main ? c.lime : c.card;
+        const fg = on ? '#FFFFFF' : main ? palette.ink : c.text;
+        // Equal slots: nothing moves when the active tab changes, so a tap always lands where it looks.
+        return (
+          <Pressable
+            key={route.key}
+            onPress={press}
+            accessibilityRole="tab"
+            accessibilityLabel={meta.label}
+            accessibilityState={{ selected: on }}
+            style={styles.slot}>
+            <View style={[styles.item, { backgroundColor: bg, borderColor: c.line }, on && styles.active]}>
+              <Icon name={meta.icon} size={on ? 24 : 22} color={fg} />
+            </View>
+            <Text style={[styles.label, { color: c.text, opacity: on ? 1 : 0 }]} numberOfLines={1}>
+              {meta.label}
+            </Text>
+          </Pressable>
+        );
+      })}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  wrap: { position: 'absolute', left: 0, right: 0, bottom: 0, paddingHorizontal: 16 },
-  bar: { flexDirection: 'row', alignItems: 'center', borderRadius: radius.pill, paddingVertical: 8, paddingHorizontal: 6, borderWidth: border },
-  item: { flex: 1, alignItems: 'center', gap: 2 },
-  pill: { width: 44, height: 30, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center' },
-  main: { width: 58, height: 58, borderRadius: 29, marginVertical: -14, alignItems: 'center', justifyContent: 'center', borderWidth: 3 },
-  label: { fontFamily: fonts.bold, fontSize: 10 },
+  bar: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: space.sm, paddingTop: space.md, borderTopWidth: border },
+  slot: { flex: 1, alignItems: 'center', gap: 4 },
+  item: { height: 50, width: 50, borderRadius: radius.pill, borderWidth: border, alignItems: 'center', justifyContent: 'center' },
+  active: { width: 64, borderRadius: radius.md },
+  label: { fontFamily: fonts.bold, fontSize: 12 },
 });

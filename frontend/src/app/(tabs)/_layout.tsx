@@ -1,9 +1,13 @@
-import { Tabs } from 'expo-router';
+import { Redirect, Tabs } from 'expo-router';
 
 import { TabBar } from '@/components/tab-bar';
 import { features } from '@/config/features';
+import { useSession } from '@/state/session';
 
 export default function TabsLayout() {
+  const { onboarded } = useSession();
+  if (!onboarded) return <Redirect href="/onboarding" />;
+
   return (
     <Tabs tabBar={(props) => <TabBar {...props} />} screenOptions={{ headerShown: false }}>
       <Tabs.Screen name="index" />

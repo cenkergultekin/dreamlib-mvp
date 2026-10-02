@@ -7,48 +7,44 @@ import { useAsync } from '@/hooks/use-async';
 import { tr } from '@/i18n/tr';
 import { listMatches } from '@/services/api';
 import { useTheme } from '@/theme/theme';
-import { palette, space } from '@/theme/tokens';
+import { space } from '@/theme/tokens';
 
 export default function Matches() {
   const { c } = useTheme();
-  const { data, loading } = useAsync(listMatches);
+  const { data } = useAsync(listMatches);
 
   return (
     <Screen>
-      <View style={{ gap: 6, paddingTop: space.xl }}>
+      <View style={{ gap: space.sm }}>
         <T v="hero">{tr.matches.title}</T>
         <T>{tr.matches.sub}</T>
       </View>
-      {loading || !data ? (
+      {!data ? (
         <Loading label="" />
       ) : (
-        data.map((m) => (
+        data.map((m, i) => (
           <Card
             key={m.id}
+            tone={i === 0 ? 'purple' : 'paper'}
             onPress={features.messages ? () => router.push({ pathname: '/match/[id]', params: { id: m.id } }) : undefined}
-            style={{ gap: space.md }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.md }}>
-              <Art colors={m.avatar} style={{ width: 48, height: 48, borderRadius: 24 }} />
+            style={{ gap: space.lg }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.lg }}>
+              <Art colors={m.avatar} style={{ width: 60, height: 60, borderRadius: 30 }} />
               <View style={{ flex: 1, gap: 2 }}>
-                <T v="h3">@{m.username}</T>
-                <T v="small" numberOfLines={1}>
+                <T v="h2" color={i === 0 ? '#FFFFFF' : undefined}>
+                  @{m.username}
+                </T>
+                <T v="small" color={i === 0 ? '#FFFFFF' : undefined} numberOfLines={1}>
                   {m.dreamTitle}
                 </T>
               </View>
-              <View style={{ alignItems: 'flex-end' }}>
-                <T v="h1" color={palette.purple}>
-                  %{m.similarity}
-                </T>
-                <T v="label">{tr.matches.similarity}</T>
-              </View>
+              {features.messages ? <Icon name="chatbubble-ellipses" size={26} color={i === 0 ? '#FFFFFF' : c.text} /> : null}
             </View>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.sm }}>
-              <T v="label">{tr.matches.shared}</T>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.sm, flexWrap: 'wrap' }}>
+              <Chip label={tr.matches.similar(m.similarity)} tone="lime" />
               {m.sharedSymbols.map((s) => (
-                <Chip key={s} label={s} tone="lime" />
+                <Chip key={s} label={`#${s}`} />
               ))}
-              <View style={{ flex: 1 }} />
-              {features.messages ? <Icon name="chatbubble-ellipses-outline" color={c.muted} /> : null}
             </View>
           </Card>
         ))

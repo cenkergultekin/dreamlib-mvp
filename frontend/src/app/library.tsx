@@ -9,7 +9,7 @@ import { tr } from '@/i18n/tr';
 import { getProfile, listMyDreams } from '@/services/api';
 import type { Dream } from '@/services/types';
 import { useTheme } from '@/theme/theme';
-import { radius, space } from '@/theme/tokens';
+import { border, fonts, radius, space } from '@/theme/tokens';
 
 type Tab = keyof typeof tr.library.tabs;
 
@@ -23,7 +23,8 @@ export default function Library() {
 
   return (
     <Screen>
-      <TopBar title={tr.library.title} />
+      <TopBar />
+      <T v="hero">{tr.library.title}</T>
       <Segmented<Tab> value={tab} onChange={setTab} options={(Object.keys(tr.library.tabs) as Tab[]).map((k) => ({ key: k, label: tr.library.tabs[k] }))} />
 
       {tab === 'books' ? list.map((d) => <DreamCard key={d.id} dream={d} />) : null}
@@ -34,7 +35,7 @@ export default function Library() {
         <Section title={tr.library.symbols}>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.sm }}>
             {profile.data.symbols.map((s, i) => (
-              <Chip key={s.label} label={`${s.label} · ${s.count}`} selected={i === 0} />
+              <Chip key={s.label} label={`${s.label} · ${s.count}`} tone={i === 0 ? 'lime' : 'paper'} />
             ))}
           </View>
         </Section>
@@ -46,11 +47,9 @@ export default function Library() {
 function TextRow({ dream }: { dream: Dream }) {
   return (
     <Card onPress={() => router.push({ pathname: '/dream/[id]', params: { id: dream.id } })}>
-      <T v="label">{formatDate(dream.createdAt)}</T>
-      <T v="h3">{dream.analysis.title}</T>
-      <T v="small" numberOfLines={3}>
-        {dream.analysis.cleanText}
-      </T>
+      <T v="small">{formatDate(dream.createdAt)}</T>
+      <T v="h2">{dream.analysis.title}</T>
+      <T numberOfLines={3}>{dream.analysis.cleanText}</T>
     </Card>
   );
 }
@@ -69,11 +68,13 @@ function Calendar({ dreams }: { dreams: Dream[] }) {
 
   return (
     <Card>
-      <T v="h3">{now.toLocaleDateString('tr-TR', { month: 'long', year: 'numeric' })}</T>
+      <T v="h2">{now.toLocaleDateString('tr-TR', { month: 'long', year: 'numeric' })}</T>
       <View style={styles.grid}>
-        {tr.library.weekdays.map((w, i) => (
-          <View key={`w${i}`} style={styles.cell}>
-            <T v="label">{w}</T>
+        {tr.library.weekdays.map((w) => (
+          <View key={w} style={styles.cell}>
+            <T v="small" style={{ fontFamily: fonts.medium }}>
+              {w}
+            </T>
           </View>
         ))}
         {Array.from({ length: offset }, (_, i) => (
@@ -81,17 +82,21 @@ function Calendar({ dreams }: { dreams: Dream[] }) {
         ))}
         {Array.from({ length: days }, (_, i) => {
           const d = byDay.get(i + 1);
-          const inner = <T v="small" color={d ? '#F7FBF8' : c.faint} style={{ fontSize: 12 }}>{i + 1}</T>;
+          const num = (
+            <T v="small" color={d ? '#FFFFFF' : c.text} style={{ fontFamily: fonts.bold }}>
+              {i + 1}
+            </T>
+          );
           return (
             <View key={i} style={styles.cell}>
               {d ? (
                 <Pressable onPress={() => router.push({ pathname: '/dream/[id]', params: { id: d.id } })} style={styles.fill}>
-                  <Art colors={d.panels[0]?.art ?? d.analysis.objects[0].art} style={[styles.fill, styles.center]}>
-                    {inner}
+                  <Art colors={['#7B5CFF', '#CFC3FF']} style={[styles.fill, styles.center, { borderRadius: radius.sm }]}>
+                    {num}
                   </Art>
                 </Pressable>
               ) : (
-                <View style={[styles.fill, styles.center, { backgroundColor: c.chip, borderRadius: radius.sm }]}>{inner}</View>
+                <View style={[styles.fill, styles.center, { borderRadius: radius.sm, borderWidth: border - 1, borderColor: c.line, opacity: 0.35 }]}>{num}</View>
               )}
             </View>
           );
@@ -103,7 +108,7 @@ function Calendar({ dreams }: { dreams: Dream[] }) {
 
 const styles = StyleSheet.create({
   grid: { flexDirection: 'row', flexWrap: 'wrap' },
-  cell: { width: `${100 / 7}%`, aspectRatio: 1, padding: 2, alignItems: 'center', justifyContent: 'center' },
-  fill: { width: '100%', height: '100%', borderRadius: radius.sm },
+  cell: { width: `${100 / 7}%`, aspectRatio: 1, padding: 3, alignItems: 'center', justifyContent: 'center' },
+  fill: { width: '100%', height: '100%' },
   center: { alignItems: 'center', justifyContent: 'center' },
 });

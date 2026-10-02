@@ -1,84 +1,70 @@
-// Single source for colors, type and spacing. Direction: playful neo-brutalism
-// (thick ink outlines, hard offset shadows, flat saturated blocks). Change the look here only.
+// Single source for colors, type and spacing. Direction: simple, big, playful neo-brutalism.
+// Color rule 60-30-10: 60% cream/paper surfaces, 30% purple family, 10% lime for the main action.
 
 export const palette = {
   ink: '#121016',
   cream: '#FFF6E6',
-  paper: '#FFFDF7',
-  lavender: '#B8A4FF',
+  paper: '#FFFDF8',
   purple: '#7B5CFF',
+  lavender: '#CFC3FF',
   lime: '#D7FF3D',
-  pink: '#FF9BD2',
-  orange: '#FF8A4C',
-  sky: '#8FD3FF',
-  yellow: '#FFD84D',
 };
 
-/** Flat block colors for cards, chips and placeholder art. */
-export const tones = {
-  lavender: palette.lavender,
-  lime: palette.lime,
-  pink: palette.pink,
-  orange: palette.orange,
-  sky: palette.sky,
-  yellow: palette.yellow,
-  paper: palette.paper,
-};
-export type Tone = keyof typeof tones;
+/** Card fills allowed by the 60-30-10 rule. */
+export type Tone = 'paper' | 'purple' | 'lavender' | 'lime';
 
 const light = {
   bg: palette.cream,
-  grid: 'rgba(18,16,22,0.06)',
   card: palette.paper,
   text: palette.ink,
-  body: '#3B3646',
-  muted: '#6E6880',
-  faint: '#9C96AD',
+  body: '#2B2735',
+  placeholder: 'rgba(18,16,22,0.4)',
   line: palette.ink,
   shadow: palette.ink,
-  chip: palette.paper,
-  accent: palette.purple,
-  onAccent: '#FFFFFF',
-  action: palette.lime,
-  onAction: palette.ink,
-  navBg: palette.ink,
-  navActive: palette.lime,
-  danger: '#E5484D',
+  purple: palette.purple,
+  lavender: palette.lavender,
+  lime: palette.lime,
+  navBg: palette.paper,
+  danger: '#D93A50',
 };
 
 export type Colors = typeof light;
 
-// Night variant (pins 04/05): ink canvas, the same colored blocks pop on it.
 const dark: Colors = {
-  bg: '#16131F',
-  grid: 'rgba(255,246,230,0.05)',
-  card: '#241F33',
+  bg: '#15121E',
+  card: '#231E32',
   text: palette.cream,
-  body: '#D9D2E8',
-  muted: '#A69FBC',
-  faint: '#7A7392',
-  line: palette.ink,
-  shadow: palette.lime,
-  chip: '#241F33',
-  accent: palette.lavender,
-  onAccent: palette.ink,
-  action: palette.lime,
-  onAction: palette.ink,
-  navBg: '#0B0A10',
-  navActive: palette.lime,
-  danger: '#FF7A80',
+  body: '#E7E1F2',
+  placeholder: 'rgba(255,246,230,0.4)',
+  line: '#000000',
+  shadow: palette.purple,
+  purple: palette.purple,
+  lavender: '#9D8BFF',
+  lime: palette.lime,
+  navBg: '#231E32',
+  danger: '#FF7A85',
 };
 
 export const colors = { light, dark };
 export type Scheme = keyof typeof colors;
 
+export function toneFill(c: Colors, tone: Tone) {
+  return { paper: c.card, purple: c.purple, lavender: c.lavender, lime: c.lime }[tone];
+}
+
+/** Text color that reads on a given fill. */
+export function onTone(c: Colors, tone: Tone) {
+  return tone === 'purple' ? '#FFFFFF' : tone === 'paper' ? c.text : palette.ink;
+}
+
 export const fonts = {
-  display: 'ArchivoBlack_400Regular',
-  regular: 'SpaceGrotesk_500Medium',
-  bold: 'SpaceGrotesk_700Bold',
+  regular: 'Lexend_400Regular',
+  medium: 'Lexend_500Medium',
+  bold: 'Lexend_700Bold',
+  heavy: 'Lexend_800ExtraBold',
 };
 
 export const border = 2.5;
 export const shadowOffset = 4;
 export const space = { xs: 4, sm: 8, md: 12, lg: 16, xl: 20, xxl: 28 };
-export const radius = { sm: 10, md: 16, lg: 22, pill: 999 };
+export const radius = { sm: 12, md: 18, lg: 26, pill: 999 };

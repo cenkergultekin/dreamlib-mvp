@@ -1,39 +1,51 @@
+import { useState } from 'react';
 import { View } from 'react-native';
 
 import { Lib } from '@/components/lib';
 import { Button, Card, Icon, Screen, T, TopBar } from '@/components/ui';
 import { tr } from '@/i18n/tr';
-import { palette, space } from '@/theme/tokens';
+import { useTheme } from '@/theme/theme';
+import { space } from '@/theme/tokens';
 
-// Payments come in Phase 2 (App Store subscriptions); this only shows the offer.
+// Payments come in Phase 2 (App Store subscriptions); for now picking a plan only confirms the choice.
 export default function Premium() {
+  const { c } = useTheme();
+  const [picked, setPicked] = useState<string | null>(null);
+
   return (
     <Screen>
       <TopBar />
-      <View style={{ gap: 6 }}>
-        <Lib mood="wow" size={90} />
-        <T v="h1">{tr.premium.title}</T>
-        <T>{tr.premium.sub}</T>
+      <View style={{ alignItems: 'center' }}>
+        <Lib mood="wow" size={130} />
       </View>
-      {tr.premium.plans.map((p) => (
-        <Card key={p.key} tone={p.key === 'premium' ? 'lime' : 'paper'} style={{ gap: space.md }}>
-          <View style={{ flexDirection: 'row', alignItems: 'baseline' }}>
-            <T v="h1" color={palette.ink} style={{ flex: 1 }}>
+      <T v="hero">{tr.premium.title}</T>
+      <T>{tr.premium.sub}</T>
+      {tr.premium.plans.map((p) => {
+        const best = p.key === 'premium';
+        const fg = best ? '#FFFFFF' : undefined;
+        return (
+          <Card key={p.key} tone={best ? 'purple' : 'paper'} style={{ gap: space.md }}>
+            <T v="h1" color={fg}>
               {p.name}
             </T>
-            <T v="h3" color={palette.ink}>
+            <T v="h3" color={fg}>
               {p.price}
             </T>
-          </View>
-          {p.perks.map((perk) => (
-            <View key={perk} style={{ flexDirection: 'row', gap: space.sm, alignItems: 'center' }}>
-              <Icon name="checkmark-circle" size={18} color={palette.purple} />
-              <T color={palette.ink}>{perk}</T>
-            </View>
-          ))}
-          <Button label={tr.premium.cta} variant="secondary" onPress={() => {}} />
-        </Card>
-      ))}
+            {p.perks.map((perk) => (
+              <View key={perk} style={{ flexDirection: 'row', gap: space.sm, alignItems: 'center' }}>
+                <Icon name="checkmark-circle" size={22} color={best ? c.lime : c.purple} />
+                <T color={fg ?? c.text}>{perk}</T>
+              </View>
+            ))}
+            <Button label={tr.premium.cta} variant={best ? 'primary' : 'dark'} onPress={() => setPicked(p.key)} style={{ marginTop: space.sm }} />
+            {picked === p.key ? (
+              <T v="small" color={fg}>
+                {tr.premium.picked}
+              </T>
+            ) : null}
+          </Card>
+        );
+      })}
     </Screen>
   );
 }
