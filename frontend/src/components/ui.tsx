@@ -24,7 +24,7 @@ export function Screen({ children, scroll = true, footer, padded = true, bg }: S
   const { c } = useTheme();
   const pad = padded ? { paddingHorizontal: space.xl } : null;
   return (
-    <SafeAreaView edges={['top']} style={{ flex: 1, backgroundColor: bg ?? c.bg }}>
+    <SafeAreaView edges={['top']} style={{ flex: 1, width: '100%', maxWidth: 520, alignSelf: 'center', backgroundColor: bg ?? c.bg }}>
       {scroll ? (
         <ScrollView contentContainerStyle={[pad, { paddingTop: space.md, paddingBottom: space.xxl * 2, gap: space.xl }]} keyboardShouldPersistTaps="handled">
           {children}

@@ -20,3 +20,6 @@ Thumbs.db
 node_modules/
 dist/
 build/
+
+# Generated brand media stays local; prompts are documented in frontend/design.md.
+frontend/assets/brand/

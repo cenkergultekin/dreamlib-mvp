@@ -9,3 +9,4 @@ Cenker bir hatayı düzelttiğinde düzeltmenin kalıbı buraya tek satır yazı
 - Yüzen, ortası kabarık "modern" navbar yaptım → referanstaki gibi: alta oturan, konturlu, yuvarlak ikon butonları, aktif olan etiketli hap.
 - Ekranlar kalabalıktı → referanslardaki sadelik: az eleman, büyük yazı, her şey rahat görünür; karakter ve tek ana aksiyon öne çıkar.
 - Referans: `referans/` (Pinterest "dreamlib type"); en net beğenilenler pin 01, 14, 20, 27, 29.
+- 2026-10-03: Lib koala olacak. İlk tüylü, eldivenli/sneaker'lı retro çizim reddedildi → küçük aksesuar varyantları yerine farklı çizim tekniklerini görsellerle karşılaştır; yön seçilmeden maskot/logo/ikonu uygulamaya yerleştirme.

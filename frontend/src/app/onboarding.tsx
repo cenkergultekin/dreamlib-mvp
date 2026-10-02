@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import { Lib } from '@/components/lib';
+import { Brand } from '@/components/brand';
+import { DreamStage } from '@/components/dream-stage';
 import { Button, Card, IconButton, Screen, T, ToggleRow } from '@/components/ui';
 import { tr } from '@/i18n/tr';
 import type { Visibility } from '@/services/types';
@@ -39,8 +41,9 @@ export default function Onboarding() {
       <Screen scroll={false}>
         <View style={{ flex: 1, paddingVertical: space.lg, gap: space.lg }}>
           <Card tone="purple" style={styles.hero}>
+            <Brand light />
             <View style={styles.heroArt}>
-              <Lib mood="happy" size={210} bounce />
+              <DreamStage size={270} />
             </View>
             <T v="hero" color="#FFFFFF">
               {o.welcome.title}

@@ -63,7 +63,7 @@ export function TabBar({ state, navigation, descriptors }: BottomTabBarProps) {
 }
 
 const styles = StyleSheet.create({
-  bar: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: space.sm, paddingTop: space.md, borderTopWidth: border },
+  bar: { width: '100%', maxWidth: 520, alignSelf: 'center', flexDirection: 'row', alignItems: 'center', paddingHorizontal: space.sm, paddingTop: space.md, borderTopWidth: border },
   slot: { flex: 1, alignItems: 'center', gap: 4 },
   item: { height: 50, width: 50, borderRadius: radius.pill, borderWidth: border, alignItems: 'center', justifyContent: 'center' },
   active: { width: 64, borderRadius: radius.md },
