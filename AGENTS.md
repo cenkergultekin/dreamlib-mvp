@@ -29,6 +29,7 @@ Cenker söylemeden Faz 2 işine (şema, Supabase istemcisi, API çağrısı) ba�
 - `npx expo start`: iPhone'da Expo Go ile QR kodundan aç
 - `npx expo start --web`: tarayıcıda
 - `npx tsc --noEmit` ve `npx expo lint`: her değişiklikten sonra
+- Windows'ta Metro bazen dosya değişikliğini kaçırıyor: ekran eski kodu gösteriyorsa sunucuyu `--clear` ile yeniden başlat. Faz 1 oturumu bellekte; sayfa yenilenince onboarding'e döner.
 
 ## Ürün kararları
 
