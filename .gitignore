@@ -23,5 +23,6 @@ build/
 
 # Generated brand media stays local; prompts are documented in frontend/design.md.
 frontend/assets/brand/
-frontend/assets/perest/
+frontend/assets/perest/*
+!frontend/assets/perest/perest-cutout.png
 frontend/assets/test/

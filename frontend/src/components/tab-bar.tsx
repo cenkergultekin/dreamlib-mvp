@@ -38,7 +38,7 @@ export function TabBar({ state, navigation, descriptors }: BottomTabBarProps) {
           const e = navigation.emit({ type: 'tabPress', target: route.key, canPreventDefault: true });
           if (!on && !e.defaultPrevented) navigation.navigate(route.name);
         };
-        const bg = on ? c.purple : main ? c.lime : c.card;
+        const bg = on ? c.purple : main ? c.lime : 'transparent';
         const fg = on ? '#FFFFFF' : main ? palette.ink : c.text;
         // Equal slots: nothing moves when the active tab changes, so a tap always lands where it looks.
         return (
@@ -65,7 +65,7 @@ export function TabBar({ state, navigation, descriptors }: BottomTabBarProps) {
 const styles = StyleSheet.create({
   bar: { width: '100%', maxWidth: 520, alignSelf: 'center', flexDirection: 'row', alignItems: 'center', paddingHorizontal: space.sm, paddingTop: space.md, borderTopWidth: border },
   slot: { flex: 1, alignItems: 'center', gap: 4 },
-  item: { height: 50, width: 50, borderRadius: radius.pill, borderWidth: border, alignItems: 'center', justifyContent: 'center' },
+  item: { height: 46, width: 46, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center' },
   active: { width: 64, borderRadius: radius.md },
   label: { fontFamily: fonts.bold, fontSize: 12 },
 });

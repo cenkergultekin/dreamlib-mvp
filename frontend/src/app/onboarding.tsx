@@ -2,7 +2,6 @@ import { router } from 'expo-router';
 import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import { Lib } from '@/components/lib';
 import { Brand } from '@/components/brand';
 import { DreamStage } from '@/components/dream-stage';
 import { Button, Card, IconButton, Screen, T, ToggleRow } from '@/components/ui';
@@ -10,7 +9,7 @@ import { tr } from '@/i18n/tr';
 import type { Visibility } from '@/services/types';
 import { useSession } from '@/state/session';
 import { useTheme } from '@/theme/theme';
-import { border, radius, space } from '@/theme/tokens';
+import { border, palette, radius, space } from '@/theme/tokens';
 
 const o = tr.onboarding;
 
@@ -40,15 +39,14 @@ export default function Onboarding() {
     return (
       <Screen scroll={false}>
         <View style={{ flex: 1, paddingVertical: space.lg, gap: space.lg }}>
-          <Card tone="purple" style={styles.hero}>
-            <Brand light />
+          <Card tone="lavender" style={styles.hero}>
+            <Brand />
             <View style={styles.heroArt}>
-              <DreamStage size={270} />
+              <DreamStage size={300} />
             </View>
-            <T v="hero" color="#FFFFFF">
+            <T v="hero" color={palette.ink}>
               {o.welcome.title}
             </T>
-            <T color="#FFFFFF">{o.welcome.body}</T>
             <View style={styles.heroFoot}>
               {dots}
               <IconButton name="arrow-forward" tone="lime" size={60} onPress={() => setStep(1)} label={tr.common.continue} />
@@ -79,7 +77,7 @@ export default function Onboarding() {
         }>
         {dots}
         <View style={{ alignItems: 'center', paddingTop: space.xl }}>
-          <Lib mood="wow" size={170} />
+          <DreamStage size={170} />
         </View>
         <T v="hero">{o.auth.title}</T>
         <T>{o.auth.body}</T>
@@ -91,7 +89,7 @@ export default function Onboarding() {
     const option = (key: Visibility, label: string, detail: string) => {
       const on = visibility === key;
       return (
-        <Pressable key={key} onPress={() => setVisibility(key)} style={[styles.option, { borderColor: c.line, backgroundColor: on ? c.purple : c.card, boxShadow: `4px 4px 0 ${c.shadow}` }]}>
+        <Pressable key={key} onPress={() => setVisibility(key)} style={[styles.option, { borderColor: c.line, backgroundColor: on ? c.purple : c.card }]}>
           <View style={[styles.radio, { borderColor: c.line, backgroundColor: on ? c.lime : c.card }]} />
           <View style={{ flex: 1, gap: 2 }}>
             <T v="h2" color={on ? '#FFFFFF' : undefined}>
@@ -120,7 +118,7 @@ export default function Onboarding() {
     <Screen footer={<Button label={guest ? o.finishGuest : o.finish} onPress={done} />}>
       {dots}
       <View style={{ alignItems: 'center', paddingTop: space.xl }}>
-        <Lib mood="sleepy" size={190} bounce />
+        <DreamStage size={190} />
       </View>
       <T v="hero">{o.reminder.title}</T>
       <T>{o.reminder.body}</T>

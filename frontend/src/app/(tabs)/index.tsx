@@ -11,7 +11,7 @@ import { useAsync } from '@/hooks/use-async';
 import { tr } from '@/i18n/tr';
 import { getProfile, listMatches, listMyDreams } from '@/services/api';
 import { useTheme } from '@/theme/theme';
-import { border, radius, space } from '@/theme/tokens';
+import { palette, radius, space } from '@/theme/tokens';
 
 export default function Home() {
   const { c } = useTheme();
@@ -37,11 +37,11 @@ export default function Home() {
         <IconButton name="library" onPress={() => router.push('/library')} label={tr.library.title} />
       </View>
 
-      <Card tone="purple" style={{ padding: space.xl, gap: space.md }}>
-          <T v="h1" color="#FFFFFF" style={{ maxWidth: 290 }}>
+      <Card tone="lavender" style={{ padding: space.xxl, gap: space.lg }}>
+          <T v="h1" color={palette.ink} style={{ maxWidth: 300, fontSize: 34, lineHeight: 40 }}>
             {heroTitle}
           </T>
-          <DreamStage mood={night ? 'sleepy' : 'happy'} size={210} />
+          <DreamStage size={260} />
         {night && features.bedtime ? (
           <>
             <Button label={tr.home.bedtimeCta} icon="moon" onPress={() => router.push('/bedtime')} />
@@ -55,12 +55,11 @@ export default function Home() {
       {p ? (
         <Card style={{ gap: space.lg }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.sm }}>
-            <Icon name="flame" size={24} color={c.purple} />
             <T v="h3" style={{ flex: 1 }}>{tr.home.streak(p.streak)}</T>
           </View>
           <View style={{ flexDirection: 'row', gap: space.sm }}>
             {Array.from({ length: p.weeklyGoal.total }, (_, i) => (
-              <View key={i} style={{ flex: 1, height: 12, borderWidth: border, borderColor: c.line, borderRadius: radius.pill, backgroundColor: i < p.weeklyGoal.done ? c.purple : c.bg }} />
+              <View key={i} style={{ flex: 1, height: 6, borderRadius: radius.pill, backgroundColor: i < p.weeklyGoal.done ? c.purple : c.bg }} />
             ))}
           </View>
           <T v="small">{tr.home.goal(p.weeklyGoal.done, p.weeklyGoal.total)}</T>

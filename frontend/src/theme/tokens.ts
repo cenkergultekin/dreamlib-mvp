@@ -3,10 +3,10 @@
 
 export const palette = {
   ink: '#121016',
-  cream: '#FFF6E6',
+  cream: '#F5F2EA',
   paper: '#FFFDF8',
-  purple: '#7B5CFF',
-  lavender: '#CFC3FF',
+  purple: '#7860CF',
+  lavender: '#E4DDF5',
   lime: '#D7FF3D',
 };
 
@@ -19,7 +19,7 @@ const light = {
   text: palette.ink,
   body: '#2B2735',
   placeholder: 'rgba(18,16,22,0.4)',
-  line: palette.ink,
+  line: '#DDD8E4',
   shadow: palette.ink,
   purple: palette.purple,
   lavender: palette.lavender,
@@ -64,7 +64,7 @@ export const fonts = {
   heavy: 'Lexend_800ExtraBold',
 };
 
-export const border = 2.5;
-export const shadowOffset = 4;
+export const border = 1;
+export const shadowOffset = 0;
 export const space = { xs: 4, sm: 8, md: 12, lg: 16, xl: 20, xxl: 28 };
 export const radius = { sm: 12, md: 18, lg: 26, pill: 999 };

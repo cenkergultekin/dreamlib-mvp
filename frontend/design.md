@@ -116,7 +116,7 @@ Create ONE original KOALA character concept for Dreamlib. The attached images ar
 
 2026-10-03. İlk retro çizim reddedildi; seçilen Perest yönü ve ikon denemeleri yukarıda.
 
-UI taslağı: onboarding ve ana sayfada daha büyük karakter alanı, sade wordmark, haftalık ilerleme çubuğu, webde 520 px ekran sınırı. Krem/mor/asit yeşili ve Lexend korunur. Mevcut Lib geçici olarak kalır.
+UI revizesi: arka plansız erimiş Perest onboarding/ana sayfa ve diğer maskot alanlarında kullanılır; küçük yükleme alanlarında spinner. Krem/lavanta/mor paleti, Lexend, ince çizgiler, gölgesiz kartlar, sade alt menü ve kompakt rüya kartları; webde 520 px sınır. Uygulamanın kullandığı perest-cutout.png repoya girer; üretim denemeleri yerel kalır.
 
 ## Görsel seçenekler
 
