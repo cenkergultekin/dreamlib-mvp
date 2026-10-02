@@ -2,7 +2,7 @@
 // Plain sentence case everywhere; no all-caps labels.
 export const tr = {
   tabs: { home: 'Ana sayfa', explore: 'Keşfet', tell: 'Anlat', matches: 'Eşleşme', profile: 'Profil' },
-  common: { back: 'Geri', continue: 'Devam', save: 'Kaydet', cancel: 'Vazgeç', soon: 'Yakında', premium: 'Premium' },
+  common: { back: 'Geri', continue: 'Devam', save: 'Kaydet', cancel: 'Vazgeç', soon: 'Yakında', premium: 'Premium', perest: 'Perest', perestReading: 'Perest, beyaz defterini okuyor' },
   home: {
     hello: 'Merhaba,',
     heroMorning: 'Dün gece ne gördün?',
@@ -47,7 +47,7 @@ export const tr = {
       psychoanalytic: { label: 'Psikanalitik', detail: 'Sembollerin psikolojideki karşılığı' },
     },
     submit: 'Onayla ve yorumla',
-    interpreting: 'Lib rüyanı okuyor…',
+    interpreting: 'Perest rüyanı okuyor…',
   },
   analysis: {
     objects: 'Neler gördün?',
@@ -62,7 +62,7 @@ export const tr = {
     panels: 'Kaç kare?',
     avatar: 'Beni de çiz',
     generate: (n: number) => `${n} karelik sayfayı çiz`,
-    drawing: 'Lib çiziyor…',
+    drawing: 'Perest çiziyor…',
     quota: 'Ücretsiz planda günde 1 sayfa',
   },
   manga: {
@@ -112,7 +112,7 @@ export const tr = {
     sub: 'Bugün aklında ne var? Bir iki cümle yeter.',
     placeholder: 'Yarınki sunum yüzünden biraz gerginim…',
     submit: 'Bu gece ne görebilirim?',
-    thinking: 'Lib düşünüyor…',
+    thinking: 'Perest düşünüyor…',
     possible: 'Görebileceğin semboller',
     remind: 'Sabah bana hatırlat',
     done: 'İyi uykular',

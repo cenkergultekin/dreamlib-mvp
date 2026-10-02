@@ -8,7 +8,7 @@ import Svg, { Circle, Path } from 'react-native-svg';
 import { Lib, type LibMood } from '@/components/lib';
 import type { Art as ArtColors } from '@/services/types';
 import { useTheme } from '@/theme/theme';
-import { border, fonts, onTone, palette, radius, shadowOffset, space, toneFill, type Tone } from '@/theme/tokens';
+import { border, fonts, onTone, palette, radius, space, toneFill, type Tone } from '@/theme/tokens';
 
 export type IconName = ComponentProps<typeof Ionicons>['name'];
 
@@ -24,7 +24,7 @@ export function Screen({ children, scroll = true, footer, padded = true, bg }: S
   const { c } = useTheme();
   const pad = padded ? { paddingHorizontal: space.xl } : null;
   return (
-    <SafeAreaView edges={['top']} style={{ flex: 1, backgroundColor: bg ?? c.bg }}>
+    <SafeAreaView edges={['top']} style={{ flex: 1, width: '100%', maxWidth: 520, alignSelf: 'center', backgroundColor: bg ?? c.bg }}>
       {scroll ? (
         <ScrollView contentContainerStyle={[pad, { paddingTop: space.md, paddingBottom: space.xxl * 2, gap: space.xl }]} keyboardShouldPersistTaps="handled">
           {children}
@@ -58,14 +58,12 @@ export function T({ children, v = 'body', color, style, numberOfLines }: TProps)
   );
 }
 
-/** Ink outline + hard offset shadow; pressing sinks the box into its shadow. */
+/** Quiet surface; interaction changes opacity rather than moving the layout. */
 function brutal(c: { line: string; shadow: string }, pressed = false): ViewStyle {
-  const o = pressed ? 1 : shadowOffset;
   return {
     borderWidth: border,
     borderColor: c.line,
-    boxShadow: `${o}px ${o}px 0 ${c.shadow}`,
-    transform: [{ translateX: shadowOffset - o }, { translateY: shadowOffset - o }],
+    opacity: pressed ? 0.8 : 1,
   };
 }
 
@@ -84,7 +82,7 @@ export function PressBox({ onPress, disabled, style, children, flat, label }: Pr
       disabled={disabled}
       accessibilityRole="button"
       accessibilityLabel={label}
-      style={({ pressed }) => [!flat && brutal(c, pressed && !disabled), { opacity: disabled ? 0.5 : 1 }, style]}>
+      style={({ pressed }) => [!flat && brutal(c, pressed && !disabled), { opacity: disabled ? 0.5 : pressed ? 0.8 : 1 }, style]}>
       {children}
     </Pressable>
   );
@@ -150,7 +148,7 @@ type CardProps = { children: ReactNode; style?: StyleProp<ViewStyle>; onPress?: 
 export function Card({ children, style, onPress, tone = 'paper' }: CardProps) {
   const { c } = useTheme();
   return (
-    <PressBox onPress={onPress} style={[styles.card, { backgroundColor: toneFill(c, tone) }, style]}>
+    <PressBox flat onPress={onPress} style={[styles.card, { backgroundColor: toneFill(c, tone) }, style]}>
       {children}
     </PressBox>
   );
@@ -162,9 +160,8 @@ export function Art({ colors, height, style, children }: { colors: ArtColors; he
   return (
     <View style={[{ height, borderRadius: radius.md, overflow: 'hidden', backgroundColor: colors[0], borderWidth: border, borderColor: c.line }, style]}>
       <Svg style={StyleSheet.absoluteFill} viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
-        <Circle cx={68} cy={38} r={22} fill={colors[1]} stroke={palette.ink} strokeWidth={1.5} />
-        <Path d="M24 22 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z" fill={colors[2] ?? palette.paper} stroke={palette.ink} strokeWidth={1.2} />
-        <Path d="M0 82 Q 25 70 50 82 T 100 80 V100 H0z" fill={colors[2] ?? colors[1]} stroke={palette.ink} strokeWidth={1.5} />
+        <Circle cx={75} cy={28} r={30} fill={colors[1]} />
+        <Path d="M0 70 Q 30 38 60 72 T 110 56 V100 H0z" fill={colors[2] ?? colors[1]} />
       </Svg>
       {children}
     </View>
@@ -280,7 +277,7 @@ const styles = StyleSheet.create({
   footer: { paddingHorizontal: space.xl, paddingTop: space.md, paddingBottom: space.xl, gap: space.sm },
   button: { minHeight: 60, borderRadius: radius.pill, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: space.sm, paddingHorizontal: space.xl },
   ghost: { minHeight: 48, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: space.sm },
-  chip: { alignSelf: 'flex-start', paddingHorizontal: 16, paddingVertical: 8, borderRadius: radius.pill, borderWidth: 2 },
+  chip: { alignSelf: 'flex-start', paddingHorizontal: 16, paddingVertical: 8, borderRadius: radius.pill, borderWidth: 1 },
   card: { borderRadius: radius.lg, padding: space.xl, gap: space.sm },
   center: { alignItems: 'center', justifyContent: 'center' },
   segmented: { flexDirection: 'row', borderRadius: radius.pill, padding: 5, borderWidth: border },

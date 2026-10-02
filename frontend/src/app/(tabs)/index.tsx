@@ -3,14 +3,15 @@ import { useCallback } from 'react';
 import { ScrollView, View } from 'react-native';
 
 import { DreamCard } from '@/components/dream-card';
-import { Lib } from '@/components/lib';
+import { Brand } from '@/components/brand';
+import { DreamStage } from '@/components/dream-stage';
 import { Art, Button, Card, Icon, IconButton, Screen, Section, T } from '@/components/ui';
 import { features } from '@/config/features';
 import { useAsync } from '@/hooks/use-async';
 import { tr } from '@/i18n/tr';
 import { getProfile, listMatches, listMyDreams } from '@/services/api';
 import { useTheme } from '@/theme/theme';
-import { space } from '@/theme/tokens';
+import { palette, radius, space } from '@/theme/tokens';
 
 export default function Home() {
   const { c } = useTheme();
@@ -30,19 +31,17 @@ export default function Home() {
     <Screen>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <View style={{ flex: 1 }}>
-          <T>{tr.home.hello}</T>
-          <T v="h1">{p?.displayName ?? ''}</T>
+          <Brand />
+          <T v="small" style={{ marginTop: space.sm }}>{tr.home.hello} {p?.displayName ?? ''}</T>
         </View>
         <IconButton name="library" onPress={() => router.push('/library')} label={tr.library.title} />
       </View>
 
-      <Card tone="purple" style={{ padding: space.xxl, gap: space.lg }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.md }}>
-          <T v="h1" color="#FFFFFF" style={{ flex: 1 }}>
+      <Card tone="lavender" style={{ padding: space.xxl, gap: space.lg }}>
+          <T v="h1" color={palette.ink} style={{ maxWidth: 300, fontSize: 34, lineHeight: 40 }}>
             {heroTitle}
           </T>
-          <Lib mood={night ? 'sleepy' : 'happy'} size={104} bounce />
-        </View>
+          <DreamStage size={260} />
         {night && features.bedtime ? (
           <>
             <Button label={tr.home.bedtimeCta} icon="moon" onPress={() => router.push('/bedtime')} />
@@ -54,16 +53,17 @@ export default function Home() {
       </Card>
 
       {p ? (
-        <View style={{ flexDirection: 'row', gap: space.md }}>
-          <Card style={{ flex: 1 }}>
-            <Icon name="flame" size={28} color={c.purple} />
-            <T v="h3">{tr.home.streak(p.streak)}</T>
-          </Card>
-          <Card style={{ flex: 1 }}>
-            <Icon name="calendar" size={28} color={c.purple} />
-            <T v="h3">{tr.home.goal(p.weeklyGoal.done, p.weeklyGoal.total)}</T>
-          </Card>
-        </View>
+        <Card style={{ gap: space.lg }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.sm }}>
+            <T v="h3" style={{ flex: 1 }}>{tr.home.streak(p.streak)}</T>
+          </View>
+          <View style={{ flexDirection: 'row', gap: space.sm }}>
+            {Array.from({ length: p.weeklyGoal.total }, (_, i) => (
+              <View key={i} style={{ flex: 1, height: 6, borderRadius: radius.pill, backgroundColor: i < p.weeklyGoal.done ? c.purple : c.bg }} />
+            ))}
+          </View>
+          <T v="small">{tr.home.goal(p.weeklyGoal.done, p.weeklyGoal.total)}</T>
+        </Card>
       ) : null}
 
       {last ? (

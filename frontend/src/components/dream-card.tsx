@@ -14,10 +14,10 @@ export function DreamCard({ dream, large, height }: { dream: Dream; large?: bool
   const { c } = useTheme();
   const cover = dream.panels[0]?.art ?? dream.analysis.objects[0].art;
   return (
-    <Card onPress={() => router.push({ pathname: '/dream/[id]', params: { id: dream.id } })} style={{ padding: space.md, gap: space.md }}>
-      <Art colors={cover} height={height ?? (large ? 200 : 150)} />
-      <View style={{ gap: 4, paddingHorizontal: space.xs }}>
-        <T v="h2" numberOfLines={2}>
+    <Card onPress={() => router.push({ pathname: '/dream/[id]', params: { id: dream.id } })} style={{ padding: space.md, gap: space.lg, flexDirection: large ? 'row' : 'column', alignItems: large ? 'center' : undefined }}>
+      <Art colors={cover} height={height ?? (large ? 112 : 140)} style={large ? { width: 112 } : undefined} />
+      <View style={{ gap: space.sm, paddingHorizontal: space.xs, flex: large ? 1 : undefined }}>
+        <T v={large ? 'h3' : 'h2'} numberOfLines={2}>
           {dream.analysis.title}
         </T>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.sm }}>
