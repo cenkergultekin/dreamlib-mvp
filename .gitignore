@@ -1,6 +1,7 @@
 # Belgeler ve tasarım kaynakları repoya girmez
 belgeler/
 dreamlib-v1-design-type/
+referans/
 *.docx
 *.pptx
 *.pdf

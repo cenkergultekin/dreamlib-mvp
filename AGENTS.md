@@ -18,7 +18,9 @@ Cenker söylemeden Faz 2 işine (şema, Supabase istemcisi, API çağrısı) ba�
 
 - Her servis kendi klasöründe. Firebase yok.
 - Geliştirme Windows'ta; test Cenker'in iPhone'unda Expo Go ve tarayıcıda Expo web. iOS build EAS Build ile.
-- Paketleri `npx expo install` ile ekle (SDK uyumu). Ağır UI kütüphanesi yerine kendi küçük bileşenlerimiz.
+- Expo SDK 57. Expo her sürümde API değiştirir; ezberden yazma, `https://docs.expo.dev/versions/v57.0.0/` ve `https://docs.expo.dev/llms.txt`'ten doğrula.
+- Paketleri `npx expo install` ile ekle (SDK uyumu). Expo Go'da olmayan native modül ekleme (Faz 1 Expo Go ile test edilir). Ağır UI kütüphanesi yerine kendi küçük bileşenlerimiz.
+- Rotalar `frontend/src/app/` (Expo Router); rota olmayan kod onun dışında. `ios/` ve `android/` elle yazılmaz.
 
 ## Komutlar
 
@@ -51,5 +53,11 @@ Cenker söylemeden Faz 2 işine (şema, Supabase istemcisi, API çağrısı) ba�
 - `belgeler/` ve `dreamlib-v1-design-type/` git dışı; repoya ekleme. `belgeler/db pass.txt`'i açma.
 - `.env*` okuma/yazma yok; anahtarlar uygulamaya gömülmez, Faz 2'de Edge Functions'ta durur.
 - Konu başına küçük commit. `main`'e push Cenker'in onayıyla; force push yok.
+- Commit ve PR yazarı yalnız Cenker; co-author ya da "Generated with" satırı yok.
+
+## Hafıza ve dosya boyu
+
+- İşe başlamadan `memory.md`'yi oku: Cenker'in daha önce düzelttiği hatalar ve doğru yaklaşım orada. Cenker bir hatayı düzelttiğinde kalıbını oraya tek satır yaz.
+- Proje uzun sürecek: her `.md` en fazla 160 satır. Uzatma; yeni bilgi eskisinin yerine geçer, tekrar eden budanır.
 
 Günlük: `C:/Users/gulte/Documents/Obsidian Vault/kayitlar/dreamlib-log.md`; proje notu aynı kasada `projeler/dreamlib/dreamlib.md`. İş bitince günlüğe sonuç ve açık işleri yaz.
